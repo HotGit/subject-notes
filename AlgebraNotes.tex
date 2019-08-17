@@ -1,0 +1,820 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Algebra}
+\subtitle{Dogmas, Magmas, ... , Groups, ... , Linear Spaces, ... , Algebras}
+\author{Math U Whore 10}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{Algebra}
+Algebra, the subject, is the study of the forms of mathematical objects.
+
+\section{Dogma - Unary Operation}
+A non-empty set, $S$, with a unary operation $\circ$, is a dogma $D = (S,\circ)$.
+$$M \rightarrow M,\ \  d_{1} \mapsto \circ d_{1}$$
+(These are simply endomorphic functions)
+If we consider finite sets of order n. The number of dogmas is $n^n$\\
+If we start at an element, $s$, and apply the operation $k$ times we write $s^k$. A dogma is cyclic if every element can be reached from any other element by repeated application of operator.
+We define an idempotent element to be one such that 
+$$d \mapsto \circ d = d$$
+If all elements in the dogma are idempotent, this is the identity dogma.
+The dogma is surjective if $\forall d \in D, \exists \bar{d}\in D$ s.t. $\circ\bar{d} = d$. 
+The dogma is injective if $\circ d = \circ\bar{d} \implies d=\bar{d}$ 
+
+
+\section{Magma - Binary Operation}
+A non-empty set, $S$, with a binary operation $\circ$, is a magma $M = (S,\circ)$. 
+$$M\times M \rightarrow M, \ \ (m_{\alpha}, m_{\beta}) \mapsto m_{\alpha}\circ m_{\beta}$$
+A classic example of a magma is the set of binary trees with 'multiplication' being defined as each argument being put at each end of a new binary node (top of tree). (Non-associative, non-commutative, .... )
+
+\subsection{Elementary Considerations}
+Consider $m_{\alpha}\circ m_{\alpha}$ for some $m_{\alpha}\in M$. This is either $m_{\alpha}$, in which case $m_{\alpha}$ is defined to be an idempotent element of the magma, or $m_{\beta}$. In the case that the order of $M$ is $1$, the singleton member is idempotent.\\ \\
+Consider $m_{\alpha}\circ m_{\beta}$ for some $m_{\alpha}, m_{\beta}\in M$.
+
+
+\subsection{Interesting Magma Elements}
+
+Two elements, $m_{\alpha}, m_{\beta}\in M$, are relatively commutative if
+$$m_{\alpha}\circ m_{\beta} = m_{\beta}\circ m_{\alpha}$$
+If
+$$m_{\alpha}\circ m_{\beta} = m_{\beta}\circ m_{\alpha},\ \  \forall m_{\alpha}, m_{\beta} \in M$$
+then the magma is commuative
+
+
+Interesting particular elements in a magma include
+\begin{itemize}
+\item{Cancellative: $\exists c_{L}\in M, \forall m_{1}, m_{2} \in M,  c_{L}\circ m_{1} = c_{L}\circ m_{2} \Rightarrow m_{1} = m_{2}$}
+\item{Champion (absorber, zero): $\exists C_{L}\in M, \forall m\in M, C_{L}\circ m = C_{L}$}
+\item{Idempotent: $\exists m\in M, m\circ m = m$} 
+\end{itemize}
+The above are the left verions. Right versions can be defined in the same manner. \\
+\paragraph{Cancellative} A cancellative item, $c$, induces an injective map
+$$\phi_{c}\colon M \rightarrow M,\ \  \phi_{c}(m)\equiv c\circ m $$
+In the finite case we see unique elements in the appropriate row of Cayley table. A right cancellative will give unique elements in a column.
+\paragraph{Champion}
+If a magma, $M$, has two (or more ) L-champions then it cannot have a R-champion.  Suppose $L_{1}$ and $L_{2}$ are distinct L-champions. Assume $R$ is a R-champion.
+$$L_{1} = L_{1} \circ R = R = L_{2} \circ R = L_{2}$$
+We have a contradiction as these L-champions are distinct.  A similar argument can be made for multiple R-champions forbidding an L-champion. 
+If a magma, $M$, has $C_{L}$ and $C_{R}$, then they are equal. This is sometimes, generally when the operation is being called 'multiplication', known as zero, and can be denoted $0$. 
+$$C_{L} = C_{L} \circ C_{R} = C_{R} = 0$$
+
+
+
+
+
+\subsubsection{Submagma}
+If $M = (S,\circ)$ is a magma, a non-empty subset $A$ of $M$, is a submagma if 
+$$a_{1},a_{2}\in A\Rightarrow a_{1}\circ a_{2}\in A$$ 
+If $A$ is a proper subset and is closed under the magma operation, $A$ is a proper submagma.
+
+\subsubsection{Finite Magmas}
+If the magma has finitely many elements, $n$, we can represent the magma by a $n\times n$ grid, (an operation table, Cayley table), showing the result for each pairing in the domain. In this representation, there are $n$ possibilities for each grid point. For a set of finite order $n$, there are $n^{n^2}$ possible magmas. \\
+\begin{tabular}{| l | r | r | r | r | r |} \hline
+$\# M$ & 1 & 2 & 3 & 4 & n \\ \hline
+Magmas & 1 & 16 & 19,683 & 4,294,967,296 & $n^{n^2}$ \\ \hline
+\end{tabular} \\
+
+\subsubsection{Magma Homomorphism}
+Consider a map between magmas
+$$\phi\colon (M, \cdot) \rightarrow (\bar{M}, \circ)$$
+This map is a homomorphism (form preserving) if it satisfies,
+$$\phi(m_{1} \cdot m_{2}) = \phi(m_{1}) \circ \phi(m_{2}), \ \ \forall m_{1},m_{2}\in M$$
+It is important to note that this map may not be surjective. If a bijective homomorphism exists between two magmas than the magmas are said to be isomorphic.\\
+Magma homomorphisms map idempotent elements into idempotent elements
+$$\phi(m) = \phi(m \cdot m) = \phi(m) \ $$
+
+
+\subsection{Unital Magma}
+If
+$$ \exists I_{L}\in M, \forall m\in M, I_{L}\circ m = m $$
+this element is known as a left-identity. A similar definition exists for a right-identity.
+If a magma, $M$, has two (or more) L-identities then it cannot have a R-identity.  Suppose $L_{1}$ and $L_{2}$ are distinct L-identities. Assume $R$ is a R-identity.
+$$L_{1} = L_{1} \circ R = R = L_{2} \circ R = L_{2}$$
+This contradicts the assumption that the L-identities were distinct. A similar argument can be made for multiple R-identities forbidding an L-identity.However, if a magma, has $I_{L}$ and $I_{R}$, then they are equal. This element is known as the identity and is denoted $I$. The identitity element is idempotent.
+$$I_{L} = I_{L} \circ I_{R} = I_{R} = I$$
+$$I \circ I = I$$  
+A magma with an identity is called unital.
+
+\subsubsection{Submagma}
+
+\subsubsection{Finite Unital Magmas}
+\begin{tabular}{| l | r | r | r | r | r |} \hline
+$\# M$ & 1 & 2 & 3 & 4 & n \\ \hline
+Unital Magmas & 1 & 2 & 81 & 262,144 & $n^{(n-1)^2}$ \\ \hline
+\end{tabular}
+
+\subsubsection{Magma Homomorphism}
+Consider a magma homomorphism
+$$\phi\colon (M, \cdot) \rightarrow (\bar{M}, \circ)$$
+where $M$ has a L-identity, $I_{L}$
+$$\phi(m) = \phi(I_{L} \cdot m) = \phi(I_{L}) \circ \phi(m)$$
+This is true for all $m\in M$ so $\phi(I_{L})$ is a L-idenity in $\bar{M}$. So L-identities are mapped to L-identities. The same is true for R-identities. Therefore, if a magma homomorphism exists for a unital magma, the image magma has an identity element, $\bar{I} = \phi(I)$.\\
+
+\subsection{Commutative Magma}
+If
+$$m_{1}\circ m_{2} = m_{2}\circ m_{1}, \forall m_{1}, m_{2} \in M$$
+then the magma is commuative
+\subsubsection{Finite Unital Magmas}
+hello
+\begin{tabular}{| l | r | r | r | r | r |} \hline
+$\# M$ & 1 & 2 & 3 & 4 & n \\ \hline
+Commutative Magmas & 1 & 2 & 81 & 262,144 & $n^{(n-1)^2}$ \\ \hline
+\end{tabular}
+
+\begin{tabular}{| l | r | r | r | r | r |} \hline
+$\# M$ & 1 & 2 & 3 & 4 & n \\ \hline
+Unital Magmas & 1 & 2 & 81 & 262,144 & $n^{(n-1)^2}$ \\ \hline
+Semigroups & 1 & 4 & 18 &  & HARD \\ \hline
+\end{tabular}
+
+
+
+\subsection{Magma Properties}
+Properties of interest with regard to this mapping include
+\begin{itemize}
+\item{Associativity: $(m_{1}\circ m_{2}) \circ m_{3} = m_{1}\circ (m_{2} \circ m_{3})$, $\forall m_{1}, m_{2}, m_{3} \in M$}
+\item{Commutativity: }
+\item{Divisibility (left and right versions): $\forall m_{1}, m_{2} \in M, \exists m_{12}\in M, m_{1} \circ m_{12} = m_{2}$}
+\item{Idempotency: $\forall m\in M, m\circ m = m$}
+\item{Mediality: $(m_{1}\circ m_{2})\circ (m_{3}\circ m_{4}) =
+(m_{1}\circ m_{3})\circ (m_{2}\circ m_{4})$, $\forall m_{1}, m_{2}, m_{3}, m_{4}\in M$}
+\item{Unipotency: $m_{1}\circ m_{1} = m_{2}\circ m_{2}$, $\forall m_{1}, m_{2} \in M$}
+\item{Unitality (existence of identity): $\exists I \in M, \forall m \in M, I\circ m = m \circ \bar{m} = m$}
+\end{itemize}
+
+
+
+
+Table representation exists. In the table representation for a finite magma
+\begin{itemize}
+\item{L-cancellative row will include each element of $M$}
+\item{R-cancellative column will include each element of $M$}
+\item{L-champion row will be identical elements, the L-champion}
+\item{R-champion column will be identical elements, the R-champion} 
+\item{Idempotent will appear in relevant location on diagonal}
+\item{L-identity row will return the column terms}
+\item{R-identity column will return the row terms}
+\end{itemize}
+The identity is a specific cancellative as each element appears but in the order of the multiplication table.
+
+\begin{tabular}{| l | c | c | c | c | c | c | c | c |} \hline
+Specialized Magma & Ass & Com & Div & Ide & Med & UniP & UniT \\ \hline 
+Unital & & & & & & & X  \\ \hline
+Semigroup & X & & & & & \\ \hline
+& & X & & & & \\ \hline
+& & & X & & & \\ \hline
+& & & & X & & \\ \hline
+& & & & & X & \\ \hline
+Group & X & & X \\ \hline
+Abelian Group & X & X & X \\ \hline
+\end {tabular}
+\\
+
+Associative triplets in the domain magma get mapped to associative triplets in the image magma.
+\begin{align*}
+\phi(m_{1} \cdot m_{2} \cdot m_{3})  
+&= \phi((m_{1} \cdot m_{2}) \cdot m_{3}) \\
+&= \phi(m_{1} \cdot m_{2}) \circ \phi(m_{3}) \\
+&= (\phi(m_{1}) \circ \phi(m_{2})) \circ \phi(m_{3}) \\
+&= \phi(m_{1} \cdot (m_{2} \cdot m_{3})) \\
+&= \phi(m_{1}) \circ \phi(m_{2} \cdot m_{3}) \\
+&= \phi(m_{1}) \circ (\phi(m_{2}) \circ \phi(m_{3}))
+\end{align*}\\
+
+Commutative pairings map to commutative pairings
+$$\phi(m) \circ \phi(\bar{m}) = \phi(m \cdot \bar{m}) = \phi (\bar{m} \cdot m) = \phi(\bar{m}) \circ \phi(m)$$
+Thus commutative
+
+
+
+Consider $a_{L}$
+$$\phi(a_{L}) = \phi(a_{L} \cdot m) = \phi(a_{L}) \circ \phi(m)$$
+
+
+
+Idempotent elements map to idempotent elements.
+$$\phi(m) = \phi(m \cdot m) = \phi(m) \circ \phi(m)$$
+
+
+
+\section{Unital Magmas}
+A magma with an identitiy element is unital. The existence of identity allows us to introduce invertibility. A unital magma is invertible if
+$$\forall m\in M, \exists x,y \in M, m\circ x = I^{\circ}\ \text{and}\ \ y\circ m = I^{\circ}$$ 
+Note (assuming associativity)
+$$x = I^{\circ} \circ x = (y \circ m) \circ x = y \circ (m \circ x) = y \circ I^{\circ} = y $$
+
+
+$$\phi\colon (M, \cdot) \rightarrow (\bar{M}, \circ)$$
+
+Assume $M$ is unital, $(M, \cdot, I)$, $\forall m\in M$,
+$$\phi(I) \circ \phi(m) = \phi(I \cdot m) = \phi(m) = \phi(m \cdot I) = \phi(m) \circ \phi(I)$$
+$\phi(I)$ is an identity element for $\phi(M)$.
+
+Assume $\bar{M}$ is unital, $(\bar{M}, \circ, \bar{I})$. We can define the kernel of the magma homomorphism.
+$$K_{\phi} = \text{ker }\phi \equiv \{ m\in M \mid \phi(m) = \bar{I}\} $$
+
+
+Assume $m_{0}\in K_{\phi}$,
+$$\bar{I} = \phi(g) = \phi(g \cdot I) = \phi(g) \circ \phi(I) = e_{\bar{G}} \circ \phi(e_{G}) = \phi(e_{G})$$
+A non-empty kernel means the identity is in the kernel.
+
+
+$$\phi(e_{G}) = \phi(e_{G} \cdot e_{G}) = \phi(e_{G}) \circ \phi(e_{G})$$
+All we can conclude in a U-magma is that the identity get mapped into an idempotent element
+
+
+
+
+
+\section{Semigroup}
+A semigroup is an associative magma.
+Associative count is tricky.
+
+\section{Group}
+A group, $(G,\circ)$, is associative unital magma with inverses.\\
+Given a group $(G,\circ)$ a subgroup, $(H, \circ)$, is a subset of $G$ that forms a group under the operation $\circ$. A sufficient check that a subset is a subgroup is to show for all elements of a subset, $a\circ b^{-1}$ is also in the subset. Consider the following propositions \\
+\begin{itemize}
+\item{(A) H is a subgroup of G}
+\item{(B) $x,y \in H$}
+\item{Idempotent: $\exists m\in M, m\circ m = m$} 
+\end{itemize}
+
+
+
+Given a subgroup $H$ of a group $(G,\circ)$, and a particular element $g\in G$, a left coset of $H$ is defined as the subset
+$$gH\equiv \{ gh \mid h\in H\}$$
+and the right coset of $H$ is defined as the subset
+$$Hg\equiv \{ hg \mid h\in H\}$$
+The left (right) cosets, for all choices of $g\in G$ are all of the same size.
+
+
+
+\subsubsection{Simple Groups}
+A group is simple if it is nontrivial and its only normal subgroups are the trivial group and itself.
+A nonsimple group can be broken down into a simple group and a quotient group. Finite simple groups are the  building blocks of all groups.
+
+\subsubsection{Group Homormorphism}
+Given two groups $G$ and $H$ a group homomorphism is a mapping $\phi\colon G\rightarrow H$ the group structure, $\forall g_{1}, g_{2}\in G$.
+$$\phi(g_{1} \circ_{G} g_{2}) = \phi(g_{1}) \circ_{H} \phi(g_{2})$$
+where $\circ_{G}$ and $\circ_{H}$ are the respective group operations. Notationally, $\phi(g)$ is sometimes shown as $g_{\phi}$ or $g\\ \phi$.\\
+
+
+We define the kernel of $\phi$ to be
+$$ker(\phi)\equiv\{g\in G \mid \phi(g) = e_{H}\}$$
+We can show $e_{G} \in ker(\phi)$
+$$\phi(g) = \phi(g \circ e_{G}) = \phi(g) \cdot \phi(e_{G})$$
+$$\phi(g) = \phi(e_{G} \circ g) = \phi(e_{G}) \cdot \phi(g)$$
+So,
+$$\phi(e_{G}) \cdot \phi(g) = \phi(g) = \phi(g) \cdot \phi(e_{G})$$
+Then
+$$\phi(e_{G}) = e_{H}$$
+And therefore, $e_{G}\in ker(\phi)$.\\
+
+
+
+
+Using this and considering inverses,
+$$e_{H} = \phi(e_{G}) = \phi (g \circ g^{-1}) = \phi(g) \cdot \phi(g^{-1})$$
+$$e_{H} = \phi(e_{G}) = \phi (g^{-1} \circ g) = \phi(g^{-1}) \cdot \phi(g)$$
+So,
+$$\phi(g^{-1}) \cdot \phi(g) = e_{H} = \phi(g) \cdot \phi(g^{-1})$$
+By definition, $\phi(g)^{-1} = \phi(g^{-1})$.
+
+$ker(\phi)$ forms a normal subgroup. First, we show it a subgroup. Consider $k_{1}, k_{2}\in ker(\phi)$
+\begin{align*}
+\phi(k_{1} \circ k_{2}^{-1}) & =  \phi(k_{1}) \cdot \phi(k_{2}^{-1}) \\ 
+& = \phi(k_{1}) \cdot \phi(k_{2})^{-1} \\
+& = e_{H} \cdot e_{H}^{-1} \\
+& = e_{H}
+\end{align*}
+As $e_{H} \in ker(\phi)$, it is a subgroup.
+zz
+
+We also consider
+$$im(\phi)\equiv\{h\in H \mid \exists g\in G, \phi(g) = h\}$$
+
+
+$\phi$ injective $\iff K_{\phi}=0$  
+
+
+
+\subsection{Symmetric Group}
+Given a set $S$, we define the symmetric group $Sym(S)$ to be the group of all permutations of the elements of the set.
+If the set has cardinality $n$, we call the group $S_{n}$ and note $\mid S_{n} \mid = n!$
+
+
+
+\section {Magmas with Second Operations}
+
+\subsection{Ring}
+
+The integers, $\mathbb{Z}$, are the archetypal ring.
+
+If we consider an abelian group $(S, \oplus, I_{\oplus})$ and endow it with a second binary operation, $\otimes$, that is associative with distributivity of multiplication over addition, we have a ring $R = (S, \oplus, I_{\oplus}, \otimes)$. There is no a consensus on this (sometimes emotional) issue of whether a ring needs to have an identity element under this second operation. We will not require this, and call a ring with identity a unital ring. The two sides of the debate seem to be mainly that non-unital rings appear everywhere and that certain comparisons with simpler structures get a bit fussy.
+
+Multiplication by $I_{\oplus}$ returns $I_{\oplus}$
+$$r\otimes I_{\oplus} = r\otimes (I_{\oplus} \oplus I_{\oplus}) 
+= (r\otimes I_{\oplus}) \oplus (r\otimes I_{\oplus})$$
+Applying additive inverse to both side
+$$I_{\oplus} = r\otimes I_{\oplus}$$
+Similar proof for $I_{\oplus} \otimes r$
+
+
+
+Subrings versus ideals.
+
+
+
+
+\subsubsection{Unital Ring}
+Untial Rings have a multiplicative identity $I_{\otimes}$
+
+The characteristic, char$(R)$, of a unital ring, $R$, is the number of times you must sum the multiplicative identity to obtain the additive identity. If this requires an infinite sum, the convention is that we denote this as char$(R)=0$. This notation is a bit silly.
+
+If $I_{\oplus}=I_{\otimes}$
+\begin{align*}
+r & = r \otimes I_{\otimes} \\ 
+& = r \otimes I_{\oplus} \\
+& = I_{\oplus} \\
+\end{align*}
+This is the trivial unital ring. This consists of one element.
+
+ 
+\section{Field}
+A field $\mathbb{F}=(S,+,I_{+},\cdot,I_{\cdot})$ is a set $S$ equipped with two binary operations, $+$ and $\cdot$ which satisfy the following
+\begin{itemize}
+\item{($\mathbb{F},+,I_{+})$ is an abeliean group}
+\item{($\mathbb{F}/I_{+},\cdot,I_{\cdot})$ is an abeliean group}
+\item{$f_{1} \cdot (f_{2} + f_{3}) = f_{1}\cdot f_{2} + f_{1} \cdot f_{3}, \forall f_{1}, f_{2}, f_{3} \in \mathbb{F}$}
+\end{itemize}
+
+\subsection{Finite Fields}
+
+\section{Nimbers}
+Wow. I have characteristic two but infinite order. I am a field. Find out about me.
+
+\section{Quotient Space}
+A general quotient space is a space where an equivalence relation is established between elements. Certain elements are viewed to be the "same thing". If the original set, $S$, and the equivalence is $\sim$, the quotient space $Q$ is written $\frac{S}{\sim}$.
+
+\section{Vector Space}
+A $\mathbb{F}-$vector space (or $\mathbb{F}-$linear space) is a set $V$, with an associated field $\mathbb{F}=(S,+,0,x,1)$, one binary operation, $+_{V}$ (often identified as vector addition) and a coupling between the $V$ and $\mathbb{F}$, $\cdot$ (often identified as scalar multiplication). To satisfy the requirements of a vector space the space must be an abelian group under the addition operation and satisfy the following distribution laws
+$$1_\mathbb{F}\cdot v = v$$
+$$f \cdot (v_{1} +_{V} v_{2}) = f\cdot v_{1} +_{V} f\cdot v_{2}$$
+$$(f_{1} + f_{2})\cdot v = f_{1}\cdot v +_{V} f_{2} \cdot v$$
+$$(f_{1} x f_{2})\cdot v = f_{1}\cdot(f_{2}\cdot v)$$
+
+\paragraph{Span} 
+Given a set of vectors $\{v_{1}, \ldots, v_{k}\}$, the span of these vectors is the set $$\{v\in V \mid v = f^{i}v_{i}\}$$
+\paragraph{Independence}
+A set of vectors $\{v_{1}, \ldots, v_{k}\}$ is said to be independent iff
+$$0 = f^{i}v_{i} \Rightarrow f^{i} = 0$$
+If a set of vectors is not independent the vectors are said to be dependent. Note that if the zero vector is in the set then that set is dependent. Any nonzero coefficient on the zero vector will not have an effect on the vector sum.
+\paragraph{Basis}
+A basis is a set of independent vectors whose span is the entire vector space. This is not a unique set.
+\paragraph{Dimension}
+The number of vectors making up the basis is called the dimension of the space. All bases of a vector space have the same number of elements. [This needs to be proved. Also Infinite dimension?]
+
+\subsection{Important Vector Spaces}
+Intrinsic to the definition of a vector space is the underlying field, $\mathbb{F}$. The field itself is a vector space.
+More generally a cartesian product of fields can be considered a vector space. We can also consider a sum of the field and the vector space as a vector space. We call the vectors in the larger vector space multi-vectors.
+\paragraph{Function Space}
+Given a set, $S$, and a field, $\mathbb{F}$, we can define a function space $\mathbb{F}^{S}$ consisting of functions that map from the set to the field
+$$f\in \mathbb{F}^{S} \Rightarrow f: S\rightarrow \mathbb{F}$$
+This can be promoted to a vector space in a natural manner utilizing the addition and multiplication relationships from the field. For $s\in S, f_{1},f_{2}\in \mathbb{F}^{S}, k\in \mathbb{F}$,
+$$(kf_{1}+f_{2})(s)\equiv k(f_{1}(s))+f_{2}(s)$$
+
+In the case that $S$ is a finite set, $\mid S\mid = n$ there are elements of $F(S,K)$ such that
+$$f_{i}(s_{j})=\delta_{ij}$$
+
+
+
+\subsection{Quotient Linear Spaces}
+Given a linear space $V$, and a linear subspace $N$, we define the quotient space $V/N$ as $V$ modulo $N$ meaning we treat all vectors in $N$ as the same vector. That is, we establish an equivalence class 
+	$$[v] = v + N \equiv \{v+n\mid n\in N\}$$
+Vectors in $V$ that differ by a member of $N$ become the same vector in the quotient space.
+
+There is a natural epimorphism $$\phi:V\rightarrow V/N$$
+$$v\rightarrow[v]$$
+The dimension of $V/N$ is called co-dimension of $N$ in $V$.
+
+\section{Forms}
+A form is a mapping from a vector space to the underlying field.  $k$-nary forms are often referred to a $k$-forms but this may implicitly mean that differential forms are being discussed. [Mappings from modules to underlying ring may also qualify as forms.]
+\subsection{Unary forms}
+A unary form is also known as a functional.
+$$\phi\colon V \rightarrow \mathbb{F}$$
+A unary form is known as a quadratic map if
+$$\phi(fv) = f^2 \phi(v), \forall f\in\mathbb{F}, \forall v\in V$$
+The quadratic map property means $Q(0) = Q(0v) = 0^2Q(v) = 0$. Rather confusingly the term quadratic form encompasses more than the definition "a form that is quadratic".
+
+
+\subsubsection{Linear Functionals}
+An important subset of $\mathbb{F}^{V}$ are the linear functionals. An operator $T\colon V\rightarrow \mathbb{F}$ is defined to be linear if
+$$T(f v_{1} +_{V} v_{2}) = f T(v_{1}) +_{\mathbb{F}} T(v_{2}), \forall f\in \mathbb{F},  \forall v_{1},v_{2}\in V$$
+A relevant special case is for $f = 0$ and $v_{2} = 0$. In this case
+$$T(0) = 0$$
+All linear functional map the zero vector to the zero element of the field. Call the set of linear functionals on $V$, $T^{1}(V)$
+If $V$ is finite-dimensional and we choose a particular basis for the vector space $\{\beta_{1}, \ldots, \beta_{n}\}$ we can write
+$$T(\boldsymbol{v}) = T(v^{i}\beta_{i}) = v^{i}T(\beta_{i})$$
+We really only need to know how the operator acts on the basis vectors. Each $T(v_{i})$ is an element of the field that we denote $T_{i}$. 
+$$T(\boldsymbol{v}) = a^{i}T_{i}$$
+We would expect, however, that $T(\boldsymbol{v})$ is not basis dependent. This means there is a coupling between the $v^{i}$s and the $T_{i}$s that conspires to deliver the same field element, $T(\boldsymbol{v})$.
+
+\subsection{Linear Functionals as a Vector Space}
+We introduce addition and scalar multiplication to $T^{1}(V)$
+$$(T+S)(v) \equiv T(v) + S(v)$$
+$$(fT)(v) \equiv f(T(v))$$
+and we find that we have promoted $T^{1}(V)$ to a vector space. This is known as the dual space, and is denoted $V^{\ast}$
+
+Given a basis, $\{\beta_{i}\}$ for the vector space. We consider a set of members of $T^{1}(V)$,
+$$\alpha^{i}(\beta_{j}) \equiv \delta^{i}_{j}, \ \ \alpha^{i}\in T^{1}(V)$$
+If $V$ is $n$-dimensional there are $n$ of these covectors. This set $\alpha^{j}$ of co-vectors forms a basis $V^{\ast}$
+It is worth noting that this does not introduce any sort of metric on the space. For any basis we have a dual basis for which we map to $0$ or $1$ in the field.
+
+We can consider a map, that maps each member of our chosen basis to its dual
+$$\phi\colon V \rightarrow V^{\ast}$$
+$$\beta_{j} \mapsto \phi(\beta_{j}) = \alpha^{j}$$
+This specification so far does not determine the full nature of the function. We insist that this map is linear.
+\begin{align*}
+\phi(v) &= \phi(v^{i} \beta_{i})   \\
+& = v^{i} \phi(\beta_{i}) \\
+& = v^{i} \alpha^{i} \in V^{\ast} \\
+& = v_{i} \alpha^{i}
+\end{align*}
+Notice we would "lower" the index on the field coefficient. This is to indicate it is a coeeficient of a covariant vector.
+
+
+Now consider a map 
+$$\psi\colon V \rightarrow \mathbb{F}$$
+$$v \mapsto \psi(v) = (\phi(v))(v)$$
+Note
+\begin{align*}
+\psi(\beta_{i}) &= (\phi(\beta_{i}))(\beta_{i})   \\
+&= \alpha^{i}(\beta_{i}) \\
+&= 1
+\end{align*}
+Basis vectors are mapped to the unity element of field. In general
+\begin{align*}
+\psi(v) &= (\phi(v^{i} \beta_{i}))(v^{j} \beta_{j}) \\
+&= v_{i} \alpha^{i} (v^{j} \beta_{j})    \\
+&= v_{i}v^{j} \alpha^{i} (\beta_{j}) \\
+&= v_{i}v^{j} \delta^{i}_{j} \\
+&= v_{i}v^{i}
+\end{align*}
+
+Dot product. Yadda yadda yadda.
+In the case of a complex filed we probably want to consider a complex linear version of $\phi$
+\begin{align*}
+\phi(v) &= \phi(v^{i} \beta_{i})   \\
+&= (v_{i})^{\ast} \phi(\beta_{i}) \\
+&= (v_{i})^{\ast} \alpha^{i} \\
+\end{align*}
+
+
+
+
+\subsection{Binary Forms}
+Binary forms are interesting because they generalize quantitative characterizations of pairs of vectors.
+
+Interesting properties of binary forms,
+\begin{itemize}
+\item{Bilinearity: $\omega (k_{1}v_{1} + k_{2}v_{2}, k_{3}v_{3} + k_{4}v_{4}) = 
+k_{1}k_{3}\omega (v_{1},v_{3}) + k_{1}k_{4}\omega (v_{1},v_{4}) +
+k_{2}k_{3}\omega (v_{2},v_{3}) + k_{2}k_{4}\omega (v_{2},v_{4})$}
+\item{Nondegeneracy : $\omega (v_{1},v_{2}) = 0, \forall v_{2}\in V \Rightarrow v_{1} = 0$}
+\item{Skew-Symmetry (Anti-symmetry): $\omega (v_{1},v_{2}) = 
+-\omega (v_{2},v_{1}), \forall v_{1}, v_{2}\in V$}
+\item{Symmetry: $\omega (v_{1},v_{2}) = \omega(v_{2},v_{1}), \forall v_{1}, v_{2}\in V$}
+\item{Total Isotropy (Alternating): $\omega (v_{1},v_{1}) = 0, \forall v_{1}\in V$}
+\end{itemize}
+Linearity in one term and symmetry together imply bilinearity. Note that the term alternating is more like skew-symmetry when we consider more arguments (this is confusing).
+
+\subsection{Bilinear forms}
+Assume $\omega$ is totally isotropic,
+\begin{align*}
+0 & = \omega (v_{1} + v_{2}, v_{1} + v_{2}) \\
+& = \omega (v_{1},v_{1}) + \omega (v_{1}, v_{2}) + \omega (v_{2}, v_{1}) + \omega (v_{2}, v_{2}) \\
+& = \omega (v_{1}, v_{2}) + \omega (v_{2}, v_{1})
+\end{align*}
+We conclude $\omega (v_{1}, v_{2}) = - \omega (v_{2}, v_{1})$. Total isotropy and bilinearity together imply skew-symmetry. \\
+Assume $\omega$ is skew-symmetric,
+$$\omega (v, v) = - \omega (v, v)$$
+or
+$$\omega (v, v) + \omega (v, v) = 0$$
+This is interesting. If the characteristic of the underlying field is not $2$ than the form is alternating. In the characteristic $2$ case we can not make the conclusion. 
+
+\subsection{Quadratic Forms}
+Quadratic forms are unary forms but include binary forms in their definition. \\
+A quadratic form $Q$, on a vector space $V$ is defined by the following
+\begin{itemize}
+\item {Quadratic map: $Q(fv) = f^2 Q(v), \forall f\in\mathbb{F}, \forall v\in V$}
+\item {Associated symmetric form $B_{Q}(v_{1}, v_{2}) \equiv 
+Q(v_{1} + v_{2}) - Q(v_{1}) - Q(v_{2})$ must be bilinear}
+\end{itemize}
+Note that the associated bilinear form is inherently symmetric.
+
+Alternative and more slick definition is a form such that the following holds
+$$Q(fv_{1} + v_{2}) = f^2 Q(v_{1}) + f B(v_{1}, v_{2}) + Q(v_{2})$$
+$forall f\in\mathbb{F}, v_{1},v_{2}\in V$ where B is a symmetric bilinear form.
+
+Given a symmetric bilinear form $B$, we define 
+$$Q(v) \equiv B(v,v)$$
+So, assuming that the characteristic of the underlying field is not $2$,
+\begin{align*}
+Q(fv_{1} + v_{2}) &= B(fv_{1} + v_{2}, fv_{1} + v_{2}) \\
+&= f^2 B(v_{1}, v_{1}) + f B(v_{1}, v_{2}) + f B(v_{2}, v_{1}) + B(v_{2}, v_{2}) \\
+&= f^2 Q(v_{1}) + 2 f B(v_{1}, v_{2}) + Q(v_{2})
+\end{align*}
+We know that if $B$ is a bilinear form then $\beta = 2B$ is as well. Therefore $Q$ is a quadratic form. 
+The assumption about the 
+$$Q(fv_{1} + v_{2}) = f^2 Q(v_{1})  + Q(v_{2})$$
+
+\subsection{Metric Tensor}
+A nondegenerate symmetric bilinear form is a metric tensor. This establishes an isomorphism between $V$ and $V^{\ast}$
+
+
+
+
+
+
+\subsection{N-ary forms}
+N-ary forms 
+$$\phi\colon V^{n} \rightarrow \mathbb{F}$$
+
+In n-ary forms, $(n>2)$ generalized anti-symmetry is called alternating. Specifically, alternating forms change signs under a pairwise switch in arguments. In the $n=2$ case 
+$$\omega(v_{1}, \ldots, v_{j}, \ldots, v_{k},\ldots, v_{n}) = 
+-\omega(v_{1}, \ldots, v_{k}, \ldots, v_{j},\ldots, v_{n}) $$
+
+\subsection{Tensors: multilinear $n-$forms}
+A multilinear n-form is called a type-$(0,n)$ tensor. The space of type-$(0,n)$ tensors on $V$ is denoted $T_{n}^0(V)$. In a multilinear form, if any of the domain vectors is zero, the result is the zero element of the field.
+
+$$T(v_{1},\ldots,0,\ldots,v_{k}) = 0 T(v_{1},\ldots,v_{i},\ldots,v_{k}) = 0$$
+
+We can utilize the addition and multiplication of the underlying field to define tensor addition and scalar multiplication. $T, S \in T_{n}^0(V)$, $f\in \mathbb{F}$
+
+$$(T+S)(v_{1},\ldots,v_{n}) \equiv T(v_{1},\ldots,v_{n}) + S(v_{1},\ldots,v_{n})$$
+$$(fT)(v_{1},\ldots,v_{n}) \equiv f(T(v_{1},\ldots,v_{n}))$$
+
+We see $T+S, fT \in T_{n}^0(V)$. Vector space properties follow from the properties of the underlying field. $T_{n}^0(V)$ is a vector space. $T_{1}^{0}(V)$ is the dual space $V^{\star}$. Bilinear forms discussed above make up the space $T_{2}^0(V)$
+
+We introduce a tensor product $T \in T_{k}^0(V), S \in T_{l}^0(V)$
+$$T\otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l}) \equiv 
+T(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l})$$
+In general this is not commuatitive.
+$$T\otimes S \neq S\otimes T$$
+This product is distributive across tensor addition
+\begin{align*}
+(T_{1} + T_{2}) \otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l}) &=
+(T_{1} + T_{2})(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l}) \\
+&=(T_{1}(v_{1}, \ldots, v_{k})+T_{2}(v_{1}, \ldots, v_{k}))S(v_{k+1}, \ldots, v_{k+l}) \\
+&=T_{1}(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l}) + 
+T_{2}(v_{1}, \ldots, v_{k}))S(v_{k+1}, \ldots, v_{k+l}) \\
+&= T_{1} \otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l}) +
+T_{2} \otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l})
+\end{align*}
+So
+$$(T_{1} + T_{2}) \otimes S = T_{1} \otimes S + T_{2} \otimes S$$
+and you can similarly show
+$$T \otimes (S_{1} + S_{2}) = T \otimes S_{1} + T \otimes S_{2}$$
+This product is compatible with scalar multiplciation
+\begin{align*}
+(fT) \otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l}) &=
+(fT)(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l}) \\
+&=(fT(v_{1}, \ldots, v_{k}))S(v_{k+1}, \ldots, v_{k+l}) \\
+&=fT(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l}) \\
+&=f(T(v_{1}, \ldots, v_{k})S(v_{k+1}, \ldots, v_{k+l})) \\
+&=f(T\otimes S(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l})) \\
+&=T(v_{1}, \ldots, v_{k})fS(v_{k+1}, \ldots, v_{k+l}) \\
+&=T(v_{1}, \ldots, v_{k})(fS(v_{k+1}, \ldots, v_{k+l})) \\
+&=T(v_{1}, \ldots, v_{k})(fS)(v_{k+1}, \ldots, v_{k+l}) \\
+&=T \otimes(fS)(v_{1}, \ldots, v_{k},v_{k+1}, \ldots, v_{k+l})
+\end{align*}
+So
+$$(fT) \otimes S = f(S \otimes T) = T \otimes (fS)$$
+The product is associtive
+\begin{align*}
+(T\otimes S) \otimes U(v^{1},\ldots,v_{j+k+l}) &=
+(T\otimes S)(v_{1},\ldots,v_{j+k})U(v_{j+k+1},\ldots,v_{j+k+l}) \\
+&= (T(v_{1},\ldots,v_{j})S(v_{j+1},\ldots,v_{j+k}))U(v_{j+k+1},\ldots,v_{j+k+l}) \\
+&= T(v_{1},\ldots,v_{j})S(v_{j+1},\ldots,v_{j+k})U(v_{j+k+1},\ldots,v_{j+k+l}) \\
+&= T(v_{1},\ldots,v_{j})(S(v_{j+1},\ldots,v_{j+k})U(v_{j+k+1},\ldots,v_{j+k+l})) \\
+&=
+\end{align*}
+
+The multilinearity of $T$ and $S$ carries through this product so $T\otimes S \in T_{k+l}^0(V)$
+\begin{align*}
+T\otimes S(v_{1}, \ldots, fv_{j} + \bar{v}_{j},\ldots, v_{k+l}) &=
+T(v_{1}, \ldots, fv_{j} + \bar{v}_{j}, \ldots,v_{k})S(v_{k+1}, \ldots, v_{k+l}) \\ 
+&=(T(v_{1}, \ldots, fv_{j}, \ldots,v_{k}) + T(v_{1}, \ldots, \bar{v}_{j}, \ldots,v_{k}))
+S(v_{k+1}, \ldots, v_{k+l}) \\ 
+&=(fT(v_{1}, \ldots, v_{j}, \ldots,v_{k})+T(v_{1}, \ldots, \bar{v}_{j}, \ldots,v_{k}))
+S(v_{k+1}, \ldots, v_{k+l}) \\ 
+&=fT(v_{1}, \ldots, v_{j}, \ldots,v_{k})S(v_{k+1}, \ldots, v_{k+l}) +
+T(v_{1}, \ldots, \bar{v}_{j}, \ldots,v_{k})S(v_{k+1}, \ldots, v_{k+l}) \\
+&= fT\otimes S(v_{1}, \ldots, v_{j},\ldots, v_{k+l}) +
+T\otimes S(v_{1}, \ldots, \bar{v}_{j},\ldots, v_{k+l})
+\end{align*}
+
+
+
+$$(T\otimes S) \otimes U = T \otimes (S\otimes U)$$
+
+
+
+
+If $V$ is finite, choose a basis $\{b_{1}, \ldots, b_{n}\}$. This induces a dual basis $\{b^{1}, \ldots, b^{n}\}$
+$$b^{i}b_{j}=\delta^{i}_{j}$$
+The object $b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}\in T_{k}^0(V)$\\
+\begin{align*}
+b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}(v_{1},\ldots,v_{k}) &\equiv 
+b^{i_{1}}(v_{1})\ldots b^{i_{k}}(v_{k})\\
+&= v^{1j}b^{i_{1}}(b_{j}) \cdot\ldots\cdot v^{kj}b^{i_{k}}(b_{j}) \\
+&= v^{1i_{1}}\ldots v^{1i_{k}}
+\end{align*}
+The tensor acts like a multi-projection operator and returns the product of the select coefficients. $b^4\otimes b^3 \otimes b^2$ would return the product of the 4th coefficient of the first vector, the 3rd coeeficient of the second vector and the 2nd coeeficient of the the third. \\
+Take a general tensor $T\in T_{k}^0(V)$
+\begin{align*}
+T(v_{1}, \ldots, v_{k}) &= T(v^{1i_{1}}b_{i_{1}}, \ldots, v^{ki_{k}}b_{i_{k}}) \\
+&= v^{1i_{1}}\ldots v^{ki_{k}}T(b_{i_{1}}, \ldots, b_{i_{k}}) \\
+&= T(b_{i_{1}}, \ldots, b_{i_{k}}) v^{1i_{1}}\ldots v^{ki_{k}} \\
+&= T(b_{i_{1}}, \ldots, b_{i_{k}}) b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}(v_{1},\ldots,v_{k})
+\end{align*}
+That is $T = T(b_{i_{1}}, \ldots, b_{i_{k}}) b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}$ and $b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}$ span $T_{k}^0(V)$.\\
+Assume 
+$$ f_{i_{1}\ldots i_{k}}b^{i_{1}}\otimes\ldots\otimes b^{i_{k}} = 0$$
+Applying both sides to $(b_{j_{1}}\ldots b_{j_{k}})$ gives
+$$ =0$$
+The set of tensors $b^{i_{1}}\otimes\ldots\otimes b^{i_{k}}$ is linearly independent and spans so the space so therefore forms a basis of $T_{k}^0(V)$. This set has $n^k$ members. The dimension of $T_{k}^0(V)$ is $n^k$.
+
+\subsection{Algebra}
+We can endow a vector space with a further binary operation
+$$V\times V \rightarrow V$$
+$$(v_{1},v_{2}) \mapsto v_{1} \circ v_{2}   $$
+If this product respects linearity then $(V, \circ)$ is an algebra.
+If, in addition, this product is associative then $(V, \circ)$ is an associative algebra.
+
+
+?? Lie bracket makes it an algebra???
+
+
+
+
+
+
+
+\section{Normed Space}
+An important mapping on $\mathbb{F}$-linear spaces is that of the norm. This is a mapping that assigns a positive real number to each vector and generalizes the notion of vector length.
+$$\|\cdot\|:V\rightarrow\mathbb{R}$$
+$$v \mapsto \|v\|$$
+We require three propeties for $\|\cdot\|$ to be considered a norm
+\begin{itemize}
+\item{Absolute homogeneity: $\|fv\| = |f|\|v\|$}
+\item{Non-Degeneracy: $\|v\| = 0 \iff v = 0$}
+\item{Sub-additivity: $\|v_{1}+v_{2}\| \leq \|v_{1}| + \|v_{2}\|$ }
+\end{itemize}
+The homogeneity property depends on the underlying field having its own "norm" or modulus. The homogeneity property gives us
+$$\|0\| = \|0v\| = |0|\|v\| = 0$$
+$$\|v\| = \|1v\| = |1|\|v\| = |-1|\|v\| = \|-1v\| = \|-v\|$$
+So
+$$0 = \|0\| = \|v-v\| \leq \|v\| + \|-v\| = 2\|v\|$$
+So
+$$\|v\| \geq 0$$
+The linear space $(V,\|\cdot\|)$ is called a normed space. A norm is not necessarily unique. Two norms on a vector space are equivalent if there exists $c,C\in\mathbb{R}$, $c>0$ such that
+$$ c\|v\|_{1} \leq \|v\|_{2} \leq C\|v\|_{2}, \forall v  $$
+A normed space is automatically a metric space as the norm induces a metric. We define
+$$d(v_{1},v_{2}) \equiv \|v_{2} - v_{1}\|$$
+To verify that this is a metric
+\begin{itemize}
+\item{Null distance to self: $d(v_{1},v_{1}) = \|v_{1} - v_{1}\| = \|0\| = 0 $}
+\item{Symmetry: $d(v_{1},v_{2}) = \|v_{2} - v_{1}\| = \| (-1)(v_{1} - v_{2})\| =
+|-1|\|v_{1} - v_{2}\| = 1d(v_{2},v_{1}) = d(v_{2},v_{1})$}
+\item{IoI:}
+\item{Sub-additivity:}
+\end{itemize}
+A topological vector space is normable if the topology on the space can be induced by a norm.
+
+\subsection{Seminorm}
+A seminorm is like a norm except we relax the condition of non-degeneracy. That is, non-zero vectors may be considered to have zero length. Given a seminormed space we can always promote it to a normed space by introducing an equivalence on null vectors. The trivial seminorm is to map all vectors to zero.
+
+
+
+\subsection{Bounded Operators}
+A map between two vector spaces is known as an Operator. 
+$$O\colon V \rightarrow W$$
+An operator between normed spaces is bounded if there exists a number $B\in\mathbb{R}$ such that for all vectors in the domain, $v\in V$ 
+$$\| O(v) \|_{W}\ < B\| V\|_{V}$$
+Bounded linear operators iff continuous. [Prove me]
+
+
+\subsection{Banach Space}
+A normed space that is complete in the norm is called a Banach Space.
+
+
+
+\subsection{Vector Operators}
+We consider operators that map from vector spaces to vector spaces. 
+These maps, when they preserve "linearity" are the vector space homomorphisms.
+If we promote the field to a linear space, we note that one-forms are a subset.
+
+We first consider endomorphic operators.
+$$\phi\colon V \rightarrow V$$
+
+\section{Gibbs}
+Gibbs defined two vector products. Dot product and cross product.\\
+Cross product 
+$$\times\colon V \times V \rightarrow V$$
+It is alternating
+$$v_{1} \times v_{2} = - v_{2} \times v_{1}$$
+In Cartesian coordinates
+$$ \textbf{v} \times \textbf{w} \equiv \epsilon_{ijk} v^{i}w^{j}\textbf{e}_{k} $$
+Cross product is a binary operation on vector space, that is closed. Of course, this is only defined in three dimensions. Forms an algebra. It is non-associative. \\
+Gibbs vector products were commonly adopted in physics despite their shortcomings.
+
+\subsection{Grassman Algebra}
+Grassman created 
+
+\subsection{Clifford Algebra}
+$Cl(V)$.
+Need a vector space $V$ and an inner product, so an inner product space.
+We consider $p+q+r =n$
+Consider the basis, $\{\sigma_{1}, \ldots, \sigma_{p}, e_{p+1}, \ldots, \sigma_{p+q}, \sigma_{p+q+1}, \ldots, \sigma_{p+q+r} \}$, of the $n$-dimensional space.
+
+This is it!
+$$\sigma_{i}\sigma_{j} + \sigma_{j}\sigma_{i} = 2 \delta_{ij}\epsilon_{i}$$
+Not a binary operation in the vector space $V$ but in the vector space $Cl(V)$.
+
+
+We define (do we, are we doing this backwards)
+$$a \wedge b = \frac{1}{2}(ab - ba) = -b \wedge a$$
+
+$$a\cdot b + a\wedge b = ab$$
+
+Need to sort out where
+\begin{align*}
+a \wedge b & = (ab - a \cdot b)^2 \\
+& = (ab)^2 - ab(a\cdot b) -(a\cdot b)ab + (a\cdot b)^2
+\end{align*}
+
+\subsection{Geometric Algebra}
+Geometric algebra is algebra created by associative, distributive product on a graded linear space. The grade-$0$ elements are the field elements. These will be referred to as scalars ($0$-vectors). The grade-$1$ elements are vectors of some subordinate vector space. These will be referred to as vectors ($0$-vectors). We will call vector elements of graded linear space clifs to avoid confusion. They are also referred to a multivectors ($k$-vectors where $k$ is their grade). Each grade is closed under addition. Addition between scalars is just field addition. Addition between vectors is just vector space addition.
+We stipulate that multiplication of clifs is associative and distributive. Multiplication of scalars by general clifs is commutative. We have, in some sense, generalized the scalar multiplication of a vector space.
+We add the axiom that the square of any vector is a scalar. Note that this implies
+$$(a+b)^2 = a^2 + ab + ba + b^2$$
+So 
+$$ab + ba = (a+b)^2 - a^2 - b^2$$
+Therefore $ab + ba$ is a scalar.
+
+Given a clif we can project it into an individual grade. We denote the projection into the scalars $\mid c \mid_{0}$. Note this does not read off the field coefficient but returns the $n$-grade element.
+A clif that is only one grade is homogeneous.
+
+We can write
+\begin{align*}
+c_{1}c_{2} & = \frac{1}{2}(c_{1}c_{2} + c_{1}c_{2}) + \frac{1}{2}(c_{2}c_{1} - c_{2}c_{1})\\
+& = \frac{1}{2}(c_{1}c_{2} + c_{2}c_{1}) + \frac{1}{2}(c_{1}c_{2} - c_{2}c_{1}) \\
+& = c_{1}\cdot c_{2} + c_{1}\wedge c_{2}
+\end{align*}
+where we have defined
+$$c_{1}\cdot c_{2} \equiv \frac{1}{2}(c_{1}c_{2} + c_{2}c_{1})$$
+and
+$$c_{1}\wedge c_{2} \equiv \frac{1}{2}(c_{1}c_{2} - c_{2}c_{1})$$
+Considering the first operation we immediately see it is commutative and maps two clifs to a scalar. 
+
+\section{Inner Product Space}
+We can endow the vector space with a vector multiplication operation that maps to the underlying field. This will imply a norm to vectors as well as provide the notion of angle between vectors.
+
+
+
+\section{Matrix}
+Matrices are representation. We fill a grid with field elements.
+We denote a matrix with $m$ rows and $m$ columns, $A=[a_{ij}]_{mn}$. We will denote this set as $M_{mn}(\mathbb{R})$. We need to specify what set the 
+Square matrix is an $n\times n$ grid. 
+
+Under addition, element by element addition, $M_{mn}(\mathbb{F})$, is an abelian group.
+
+Matrix multiplication is not commutative.
+
+
+
+
+
+\subsection{Metric Tensor}
+A nondegenerate symmetric bilinear form defined on the tangent space is a metric tensor. In local coordinates this can be represented by a symmetric matrix whose entries transform covariantly. If this inner product is positive definite this is known as a Riemannian manifold. Otherwise we just maintain nondegeneracy and it is a pseudo-Riemannian manifold.
+
+Minkowski metric is pseudo-Euclidean. Schwartzchild metric is pseudo-Riemanian.
+
+
+
+
+\end{document}

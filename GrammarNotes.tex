@@ -1,0 +1,69 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Country Grammar}
+\author{Matthew Horton}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Definitions}
+The empty string is denoted $\varepsilon$. Note this is different from the empty set.\\
+Given a set, $S$, we can consider the following sequence of sets of strings generated from $S$
+\begin{itemize}
+\item{$S_{0} = \{\varepsilon\}$ - the set consisting of the string}
+\item{$S_{i} = S$}
+\item{$S_{i+1} = \{ab \mid a\in S_{i}, b\in S\}$}
+\end{itemize}
+The kleene star $\star$ on a set $S$, 
+$$S^{\star} = \cup_{i\in\mathbb{N}_{0}} S_{i}$$
+Note 
+$$\emptyset^{\star} = \{ \varepsilon \}$$
+
+\section{Grammar}
+A grammar $G(N, \Sigma, P)$ is 
+\begin{itemize}
+\item{$N$ - finite set of nonterminal symbols including start symbol $S$}
+\item{$\Sigma$ - finite set of terminal symbols}
+\item{$P$ - finite set of product rules}
+\end{itemize}
+The members of the set $P$ are all of the form 
+$(\Sigma \cup N)^\star\ N(\Sigma \cup N)^\star\ \rightarrow (\Sigma \cup N)^\star$ where $\star$ is the kleene star operator. Each string has at least one member of $N$ in it. We apply product rules until we have strings consisting of only terminal symbols. No product rule, by definition, can operate on such strings. The set of these strings is the language of the grammar $L(G)$. 
+
+\section{Context-Free Grammar}
+If we restrict grammars to those with $P = \{ N \rightarrow (\Sigma \cup N)^\star \}$, this is known as a context-free grammar. They serve to generate context-free languages.\\
+Apparently it is true that string of n characters can be recognized to be in or not in language in $O(n^3)$.
+\subsection{Deterministic CFG}
+Apparently it is true that string of n characters can be recognized to be in or not in language in $O(n)$.
+
+\section{Regular Grammar}
+If we restrict grammars to those with $P = \{ N \rightarrow \varepsilon, N \rightarrow \Sigma, N \rightarrow \Sigma N \}$, this is known as a regular grammar. They serve to generate regular languages.\\
+
+\section{Examples}
+$N = \{ S \}, \Sigma = \{ a, b\}, P = \{ S\rightarrow ba, S\rightarrow aSb \}$ \\
+$L(G) = \{ a^n(ba)b^n \mid n\geq 0 \}$
+
+\section{Programming Tidbits}
+If we have a grammar such as one here for BEDMAS
+\begin{lstlisting}
+expr: term ((+|-) term)*
+term: factor ((*|/) factor)*
+factor: atom (^ atom)*
+atom: integer | LB expr RB
+\end{lstlisting}
+a parse tree will formalize the rules 1 for 1 for an example sentence. Top node would be expr. Three branches term, +, term etc. Term has branches. 
+Abstract-syntax tree (AST) is an improvement. It contains the same relevant information but deletes nodes that reflect rulenames (and brackets as well). It embodies the rule in the tree structure.  
+
+
+\end{document}

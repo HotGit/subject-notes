@@ -1,0 +1,42 @@
+\documentclass[a4paper]{scrartcl}
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{listings}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Crossing the Rubik-on}
+\author{Matthew Horton}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Convention}
+Label cubes as [U]p, [D]own, [F]ront, [B]ack, [R]ight and [L]eft. Lower case implies the inner partner to the outside side. All revolves are assumed to be clockwise respecting from the perspective of the side (or its outside partner). Inverse to indicate anti-clockwise.
+
+\section{2x2}
+
+\section{3x3}
+
+\section{4x4}
+Solve all the centre squares. Be careful of relative positioning of squares.\\
+Pair up edges, set it up so pairs are left-right opposite with matching colour on front face on higher middle. 
+$$d\ R\ F^{-1}\ U\ R^{-1}\ F\ d^{-1}$$
+3x3 solve. You may run into parity problems with edges on down.
+Two switch opposite pairs (put them in order for 3x3 solution. F and B on upper side.
+$$r^{2}\ U^{2}\ r^{2}\ (Uu)^{2}\ r^{2}\ u^2$$ Colour on up stays on up\\
+Two switch a correctly located but parity flipped edge. Put key edge front/up.
+$$r^{2}\ B^{2}\ U^{2}\ l\ U^{2}\ r^{-1}\ U^{2}\ r\ U^{2}\ F^{2}\ r\ F^{2}\ l^{-1}\ B^{2}\ r^{2}$$
+
+\section{5x5}
+Solve all centre squares.
+
+\section{Triangle}
+
+\end{document}

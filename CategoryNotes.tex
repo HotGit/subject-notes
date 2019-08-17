@@ -1,0 +1,42 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Category}
+\author{Math U Whore 10}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Mindset}
+The arrows are first-class citizens (not the objects). Categories have been historically named after the objects but this is the wrong way to think. Arrows are not functions. They could be in ceratin cases but think more abstractly.
+\section{Informal Definition}
+A Category C consists of
+\begin{itemize}
+\item{$Arr$ - A collection of arrows}
+\item{$Obj$ - A collection of objects}
+\item{$\forall f\in Arr\ \exists\ A, B \in Obj$. We write
+$A \xrightarrow{\text{f}} B$ where $A$ is the source and $B$ is the target. }
+\item{$\forall A\in Obj\ \exists id_{A}\in Arr$ called identity}
+\item{A partial (why partial?) composition $Arr\ x\ Arr \rightarrow Arr$}
+\end{itemize}
+
+$$A \xrightarrow{\text{id\textsubscript{A}}} A$$
+
+\section{Examples}
+A few examples to be understood
+\begin{itemize}
+\item{SET}
+\item{POTATO}
+\end{itemize}
+
+\end{document}

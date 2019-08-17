@@ -1,0 +1,108 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Donut = Mug}
+\author{Math U Whore 10}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{Topology}
+Topology is the pre-metric study of sets (no notion of distance between elements). Topological maps introduce the notion of continuity.\\
+A set, $S$, is a topological space $(S,\tau)$ by promoting a set of subsets, denoted $\tau$, with the following properties
+\begin{itemize}
+\item{$\emptyset\in\tau$}
+\item{$S\in\tau$}
+\item{$\tau$ closed under arbitrary unions}
+\item{$\tau$ closed under finite intersections}
+\end{itemize}
+The designated subsets of $\tau$ are denoted open sets. Complements of open sets are called closed sets. Sets can be both open and closed and are referred to as being clopen. In any topological space both $S$ and $\emptyset$ are clopen. Sets can be neither open nor closed. The subsets of $\tau$ provide a notion of nearness to the set. Elements in the same open set are near, in some sense, but separated by a non-quanitifed distance. 
+
+\subsection{Neighbourhood}
+A topological neighbourhood of a point $s$ is a subset, not necessarily open, that contains an open set.
+
+\subsection{Classification}
+Discrete topolgy is finest topology. All elements, as singletons, are open. Note that this corresponds to the powerset. Indiscrete topology is trivial and consists only of $\emptyset$ and $S$. Coarseness/fineness is a topological partial ordering on the set.
+
+\subsubsection{Separation Axioms}
+Classification of topologies is based on sepration axioms.\\
+
+I don't understand all of this ... separated implies topologically distinguishable imples distinct. Hmmm.\\
+\begin{tabular}
+{| l | l | r | c | c | c | c | c | c | c | c | c | c | } \hline
+Class & Name & Definition \\ \hline
+T0 & Kolgomorov Space  & 
+$\forall s_{1}, s_{2} \in S, \exists A\in\tau, (s_{1}\in A, s_{2}\notin A) \vee (s_{1}\notin A, s_{2}\in A) $ \\ \hline
+T1 & Frechet Space & \\ \hline
+RO & Symmetric Space\\ \hline
+T2 & Hausdorff & Topologically distinct points have disjoint neighbourhoods \\ \hline
+T3 & & \\ \hline
+\end{tabular} \\
+Discrete space is where every subset, including singletons, is closed.
+An indiscrete space is where only $\emptyset$ and $S$ are closed. 
+
+
+\subsection{Small Set Topologies}
+Singleton set has one topolgy - discrete and indiscrete at the same time.
+$$\{\emptyset, S\}$$
+Boolean set has four topologies - the discrete, the indiscrete and two which are isomorphic.
+$$\{\emptyset, S\}, \{\emptyset, \{0\}, S\}, \{\emptyset, \{1\}, S\}, \{\emptyset, \{0\}, \{1\}, S\} $$
+Tri has 29 topologies - the discrete, the indiscrete  
+$$\{\emptyset, S\}$$
+$$\{\emptyset, \{A\}, S\}, \{\emptyset, \{B\}, S\}, \{\emptyset, \{C\}, S\}$$ 
+$$\{\emptyset, \{A, B\}, S\}, \{\emptyset, \{A, C\}, S\}, \{\emptyset, \{B, C\}, S\} $$
+$$\{\emptyset, \{A\}, \{A,B\}, S\}, \{\emptyset, \{A\}, \{A,C\}, S\}, \{\emptyset, \{A\}, \{B,C\}, S\}$$ 
+$$\{\emptyset, \{B\}, \{A,B\}, S\}, \{\emptyset, \{B\}, \{B,C\}, S\}, \{\emptyset, \{B\}, \{A,C\}, S\} $$ 
+$$\{\emptyset, \{C\}, \{A,C\}, S\}, \{\emptyset, \{C\}, \{B,C\}, S\}, \{\emptyset, \{C\}, \{A,B\}, S\} $$ 
+$$\{\emptyset, \{A\}, \{B\}, \{A,B\}, S\}, \{\emptyset, \{A\}, \{C\}, \{A,C\}, S\}, \{\emptyset, \{B\}, \{C\}, \{B,C\}, S\}$$
+$$\{\emptyset, \{A\}, \{A,B\}, \{A,C\}, S\}, \{\emptyset, \{B\}, \{A,B\}, \{B,C\}, S\}, \{\emptyset, \{C\}, \{A,C\}, \{B,C\}, S\},$$
+$$\{\emptyset, \{A\}, \{B\}, \{C\}, \{A,B\}, \{A,C\}, \{B,C\}, S\}$$
+
+
+\subsection{Maps between topological spaces}
+Consider
+$$\phi\colon(X,\tau_{X})\rightarrow (Y,\tau_{Y})$$
+This mapping is an open mapping if the image of open sets is open,
+$$\forall S\in\tau_{X}, \{y \mid s\in S, y = \phi(s)\} \in \tau_{Y}$$
+This mapping is continuous if the inverse image of open sets is open,
+$$\forall S\in\tau_{Y}, \{x \mid \phi(x)\in S\} \in \tau_{X}$$
+This mapping is a homemorphism if
+\begin{itemize}
+\item{$\phi$ is open mapping}
+\item{$\phi$ is continuous}
+\item{$\phi$ is a bijection}
+\end{itemize}
+
+A homotopy is a mapping
+
+
+
+\subsection{Examples of Topologies}
+\subsubsection{Natural Number Topologies}
+"Initial Segment" topology
+$$\tau = \{\emptyset, \mathbb{N}, \{1, 2, 3, n\} \mid n\in \mathbb{N}\}$$
+"Final Segment" topology
+$$\tau = \{\emptyset, \mathbb{N}, \{n, n+1, n+2, \ldots\} \mid n\in \mathbb{N}\}$$
+
+\subsubsection{Whole Number Topologies}
+\subsubsection{Real Number Topologies}
+Check these (including failures)....
+$$\tau = \{\emptyset, \mathbb{R}, (-n, n) \mid n\in \mathbb{N}\}$$
+$$\tau = \{\emptyset, \mathbb{R}, [-n, n] \mid n\in \mathbb{N}_{0}\}$$
+$$\tau = \{\emptyset, \mathbb{R}, [n, \infty) \mid n\in \mathbb{Z}\}$$
+Failures...
+$$\tau = \{\emptyset, \mathbb{R}, (-q, q) \mid n\in \mathbb{Q}^{+}\}$$
+$$\tau = \{\emptyset, \mathbb{R}, (-r, r) \mid n\in \mathbb{R}^{+}\}$$
+
+\end{document}

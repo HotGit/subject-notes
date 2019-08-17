@@ -1,0 +1,371 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Let's Talk About Sets}
+\subtitle{Sets, Relations and Mappings}
+\author{Math U Whore 10}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{The Early Mathematical Universe}
+\subsection{Void}
+In the beginning there was nothing (except love, gin and rock'n'roll).
+\subsection{Genesis of objects} 
+Out of the chaos sprung the primordial Platonic object, Uranus, whose sole property is mathematical existence. Platonic objects inherit existence from Uranus and are endowed with additional mathematical properties. We can create more platonic objects by inheriting from other platonic objects and endowing with additional properties. Platonic objects are templates from which we instantiate example mathematical objects. An instantiation is an ur-element or atom. We can consider multiple instantiations of the same atom. We can form collections of like ur-elements, different ur-elements, or a mixture of these. More abstractly we can consider the aforementioned collections as elements and include them in collections.
+Collections consist of elements. These elements may be ur-elements or collections. Turtles all the way down. 
+
+\subsection{Bag (Multiset)}
+Consider a number of elements, we can form a collection called a bag, $B$, or multiset. Each element (whether ur-element or collection) in the bag possess only the properties of identity and inclusion. We denote inclusion with $\in$. If $b$ is an element of $B$ then $b\in B$. If all the elements in the bag are identical, the bag is defined to be a quasi-set. If the elements in the bag are all different, the bag is defined to be a set.\\
+\subsection{Quasiset} 
+A quasi-set, q-set, is a collection of indistinguishable items. The only properties of the q-set are the description of the indistinguishable elements and the number, possibly infinite, of these elements. (Numbers to be discussed). A q-set without any elements is related to the void except we are aware of what element it is the absence of which we are discussing. For each cardinality, there is a q-set for every possible property. These q-sets are in some sense isomorphic as it is simply a replacement of property that differentiates them. Thorny issues abound especially when you consider cardinality.
+
+\subsubsection{The Count - Combinatoric Musings}
+Consider interesting ways of partitioning finite q-sets to generate countable different outcomes.
+\subsubsection{Identical objects into identical bins}
+For a finite q-set of size $N$, consider you have an infinite set of indistinguishable buckets and you have indistinguishable objects and count the number of ways you can distribute the objects in the buckets.\\
+\begin{tabular}
+{| l | r | r | r | r | c | c | c | c | c | c | c | c | } \hline
+N & Count & Ways \\ \hline
+0 & 1 & \\ \hline
+1 & 1 & (1) \\ \hline
+2 & 2 & (1,1), (2) \\ \hline
+3 & 3 & (1,1,1), (1,2), (3) \\ \hline
+4 & 5 & (1,1,1,1), (1,1,2), (1,3), (2,2), (4)\\ \hline
+5 & 7 & (1,1,1,1,1), (1,1,1,2), (1,1,3), (1,2,2), (1,4), (2,3), (5) \\ \hline
+n & ? & This is a hard problem \\ \hline
+\end{tabular} \\
+These are known as the partition numbers (A000041). This is the same problem as partitioning an integer as a sum of smaller positive integers.\\
+\subsubsection{Identical objects into distinguishable bins}
+Consider the same problem but the bins are distinguishable and ordered. A bin may not be used if there is an empty bin preceeding it.\\
+\begin{tabular}
+{| l | r | r | r | r | c | c | c | c | c | c | c | c | } \hline
+N & Count & Ways \\ \hline
+0 & 1 & \\ \hline
+1 & 1 & (1) \\ \hline
+2 & 2 & (1,1), (2) \\ \hline
+3 & 4 & (1,1,1), (1,2), (2,1), (3) \\ \hline
+n & $2^{(n-1)}$ & \\ \hline
+\end{tabular} \\
+We can denote the problem as trying to determine $c(n)$. We define $c(0) \equiv 0$.
+We construct a recursive relationship. You can place $e$, $ 0 \leq e \leq N$, elements in the first bin, the problem reduces to $c(N-e)$ for the remaining elements. You need to sum over all possibilities for the first bin
+$$c(n) = \sum_{i=1}^{n} c(n-i) = c(n-1) + c(n-2) + \ldots + c(1) + c(0)$$
+Claim: $c(n) = 2^{(n-1)}, n>0$\\
+Case $n=1$
+$$c(1) = \sum_{i=1}^{1} c(1-i) = c(0) = 1 = 2^{0} = 2^{(1-1)}$$
+Prove k-case $\Rightarrow$ k+1 case 
+\begin{align*}
+c(k+1) &= \sum_{i=1}^{k+1} c(k+1-i) \\
+&= c(k) + \sum_{i=2}^{k+1} c(k+1-i)\\
+&= c(k) + \sum_{i=1}^{k} c(k-i) \\
+&= c(k) + c(k)\\
+&= 2\ c(k) \\
+&= 2\ 2^{(k-1)} \\
+&= 2^{(k)} \\
+&= 2^{((k+1)-1)}
+\end{align*}
+Another way to think of this is considering that $n$ ordered objects have $n-1$ internal positions to set a break. Each break is in one of two states absent or present. $n=0$ case is by definition.\\
+
+\subsubsection{Identical objects into finite bins}
+Alternatively, assume you have a finite number, $B$, of distinguishable bins.\\ 
+\begin{tabular}
+{| r | r | r | r | r |r | c | c | c | c | c | c | c | } \hline
+Bins & 1 & 2 & 3 & 4 & B  \\ \hline
+N = 0 & 1 & 1 & 1 & 1 & 1   \\ \hline
+1 & 1 & 2 & 3 & 4 & B   \\ \hline
+2 & 1 & 3 & & &   \\ \hline
+3 & 1 & & & &  \\ \hline
+n & 1 & & & &  ${N+B-1 \choose B-1}$  \\ \hline
+\end{tabular} \\
+We employ a version of the so-called 'stars and bars'. Each case can be represented by a 'string' of the $n$ elements (stars) intermingled with $(B-1)$ divisions between bins (bars). There are essentially $n+B-1$ positions. We must choose $B-1$ of these to put the bin divisions. This is 
+$${N+B-1 \choose B-1} = {N+B-1 \choose N}$$
+where in the second case we are just choosing the positions of the elements. \\ If we constrain the problem to ensuring that at least one element goes in each bin we restrict the problem to $B\geq N$. Using a similar argument to above we write out all of the stars and consider the $N-1$ spaces between them. We choose which of these are going to be filled with the $B-1$ bin dividers.
+$${N-1 \choose B-1}$$
+  
+\section{Set}
+Sets are composed of a collection of elements. Each element in the set, $S$, has the properties of identity,  inclusion and distinctness from other elements in the set. 
+The set with no elements is known as the empty set and is denoted $\emptyset$. No set contains a duplicate of another element and there is no consideration for order of the elements.\\
+The set of all things is problematic to define. Despite the thorniness, we define the set of all sets $\mathbb{S}$, temporarily ignoring the related difficulties. The property of the quantity of elements is known as the order of the set, and is denoted $\#S$. The order of a set is a function (function to be defined and discussed later)
+$$\# : \mathbb{S}\rightarrow \mathbb{N}_{0}$$
+Note
+$$\#\emptyset = 0$$
+In defining sets we can use curly braces to surround a list of elements, explicit representation,
+$$ S = \{ "Red", "White", "Blue"\} $$
+or a definition based description of the members, implicit representation,
+$$ S = \{ x\in\mathbb{Z} \mid mod(x,2) = 0\} $$
+To avoid the thorny issues of really big sets, such as the set of all sets, we will normally designate a relevant set that we are comfortable with and only discuss subsets of this superset.  
+
+\subsection{Subsets}
+Assume A and B are sets. A is a subset of B if $\forall a\in A, a\in B$. This is denoted $A\subseteq B$.
+More strictly, if $A\subseteq B$ and $\exists b\in B$ but $b\notin A$ then $A$ is defined to be a proper subset.
+This is denoted $A\subset B$. Any proper subset is a subset.\\ 
+For any non-empty set S, $\emptyset\subset S$ and $S\subseteq S$\\
+$$A\subseteq B, B\subseteq A \Rightarrow A = B$$
+If $A \subset B$, $B$ is defined to be a superset of $A$. A proper subset relationship means there is a proper superset partner.\\
+The complement of a subset, $A$, with respect to a set $S$, is the set of all elements belonging to $S$ that are not in $A$. It is denoted $A^{c}$ or $S/A$
+$$A^{c}\equiv\{s\in S \mid s \notin A \}$$
+When discussing complementary subsets there is often only an implicit understanding of the relevant superset.
+
+\subsection{Operations on Subsets}
+A subset operation takes two input subsets and returns an ouput subset. For clarity we are defining a set, $S$, and considering two subsets, $A,B \subseteq S$.
+The union of two subsets is a subset that contains all of the elements of each of the input subsets. It embodies an "OR" relationship.
+$$A\cup B\equiv \{x\in S\mid (x\in A)\vee(x\in B)\}$$ 
+The interesection of two subsets contains all elements that are in both input subsets. It embodies an "AND" relationship.
+$$A\cap B\equiv \{x\in S\mid (x\in A)\wedge(x\in B)\}$$
+ The symmetric difference of two subsets contains all elements that are in only one of the input subsets. It embodies an "XOR" relationship.
+$$A\Delta B\equiv \{x\in S\mid (x\in A) \underline{\vee}(x\in B)\}$$
+Commutativity follows from the commutativity of the logical operators.
+$$A\cup B = B \cup A$$
+$$A\cap B = B \cap B$$
+$$A\Delta B = B \Delta B$$
+Associativity follows from the associativity of the logical operators.
+$$(A\cup B)\cup C = A \cup (B\cup C)$$
+$$(A\cap B)\cap C = A \cap (B\cap C)$$
+$$(A\Delta B)\Delta C = A \Delta (B\Delta C)$$
+Relationships with the empty set are as follows,
+$$A \cup \emptyset = A$$
+$$A \cap \emptyset = \emptyset$$
+$$A \Delta \emptyset = A$$
+Relationships with the relevant superset, $S$, are as follows,
+$$A \cup S = S$$
+$$A \cap S = A$$
+$$A \Delta S = S/A$$
+It is worth noting, (PROOF?)
+$$A\subset B \implies (B/A)\subset B$$
+$$A\Delta B = (A/B)\cup(B/A) = (A\cup B) / (A\cap B)$$
+
+\subsection{Making Sets with Sets}
+Given a set, or sets, there are many ways of creating more sets by combination or splitting.
+
+\subsubsection{Cartesian Product}
+Given two sets, $A$ and $B$, we can consider a set formed by the Cartesian product of the two sets, $A \times B$. An element of $A\times B$ consists of an ordered pair $(a, b)$, $a\in A$, $b\in B$.
+If $A$ and $B$ are finite and $\# A=n$ and $\# B=m$ then $\#(A\times B) = nm$.
+
+\subsubsection{Sets of Subsets}
+For a set, $S$, a set of subsets can be considered. For a finite set, $\#S = n$, the number of sets of subsets is $2^{(2^{n})}$. The set that consists of all of the subsets of $S$ is known as the power set of $S$, denoted $P(S)$ and $\# P(S) = 2^{n}$. The power set can be considered as $2^{X}$ \\
+
+Some interesting properties that a particular set of subsets $\bar{S}$ of $S$ may possess include
+\begin{itemize}
+\item{$\emptyset\in\bar{S}$}
+\item{$S\in\bar{S}$}
+\item{$A\in\bar{S} \Rightarrow A^{C}\in\bar{S}$}
+\item{$A_{1}, A_{2}\in\bar{S} \Rightarrow A_{1}\bigcup A_{2}\in\bar{S}$}
+\item{$A_{1}, A_{2}\in\bar{S} \Rightarrow A_{1}\bigcap A_{2}\in\bar{S}$}
+\item{$\bar{S}$ closed under arbitrary unions}
+\item{$\bar{S}$ closed under finite intersections}
+\end{itemize}
+
+Interesting collections of subsets are the subject of the study of topology and $\sigma-$algebras much used in financial mathematics (see below for these topics). \\
+
+
+\subsection{Important Sets}
+$\mathbb{N}$ are the natural numbers. $\mathbb{N}_{0}$ are the whole numbers. $\mathbb{Z}$ are the integers. $\mathbb{Q}$ are the rational numbers. $\bar{\mathbb{Q}}$ are the irrational numbers. $\mathbb{R}$ are the real numbers. $\mathbb{C}$ are the complex numbers.
+
+
+\subsection{Distinguishable objects into finite bins - Should go into set counting}
+\begin{tabular}
+{| l | r | r | r | r | c | c | c | c | c | c | c | c | } \hline
+N & Count & Ways \\ \hline
+0 & 1 & \\ \hline
+1 & 1 & A \\ \hline
+2 & 2 & (A)(B),(AB)  \\ \hline
+3 & 5 & (A)(B)(C), (AB)(C), (AC)(B), (BC)(A), (ABC)  \\ \hline
+4 & 15 & (A)(B)(C)(D), (AB)(C)(D) x 6, (ABC)(D) x 4, (AB)(CD) x 3, (ABCD)  \\ \hline
+5 & 52 & (A)(B)(C)(D)(E), (AB) x 10, (ABC) x 10, (AB)(CD) x 15, (ABCD) x 5, (ABC)(DE) x 10, (ABCDE)  \\ \hline
+6 & 203 &\\ \hline
+\end{tabular} \\
+These are the bell or exponential numbers.
+Terms is the (AB)(CD) terms. This is $\frac{1}{2}\binom{5}{4}\binom{4}{2} = 15.$ 
+
+
+
+\section{Relations}
+A relation is the mathematical formalism of relationships between set elements. The relation is denoted $(S,T,S\times T)$. The set $S$ is referred to as the domain (source), $T$ the codomain (target) and $S\times T$ as the graph. We denote elements of $S\times T$ by $sRt$ where $s\in S$ and $t \in T$.\\
+If S and T are both of finite order, $n$ and $m$ respectively, we can represent the relation by a $m\times n$ binary matrix. "1" indicates inclusion in the graph. The number of possible relations is $2^{nm}$.\\
+Alternatively, we can represent relations by directed graphs from $n$ nodes to $m$ nodes.
+
+\subsection{Properties of Relations}
+\begin{tabular}
+{| l | l | c | c | c | c | c | c | c | c | c | c | c | } \hline
+Property & Definition & Finite case \\ \hline
+Left-total & $\forall s\in S, \exists t\in T, sRt$ & $(2^{m} - 1)^{n}$ \\ \hline
+Right-total (Surjective) & $\forall t\in T, \exists s\in S, sRt$ & $(2^{n} - 1)^{m}$ \\ \hline
+Left-Unique (Injective) & $\forall s_{1}, s_{2}\in S, t\in T, s_{1}Rt \ \& \  s_{2}Rt \Rightarrow s_{1} = s_{2}$ &
+$(n+1)^m$ \\ \hline
+Right-Unique (Functional) & 
+$\forall s\in S, t_{1}, t_{2}\in T, sRt_{1} \ \& \  sRt_{2} \Rightarrow t_{1} = t_{2}$ &
+$(m+1)^n$ \\ \hline
+\end{tabular}
+\paragraph{Left-total} Every element in the domain goes somewhere, that is, at least one place. In the finite case, in matrix representation, each column has at least one $1$, in graph notation at least one arrow leaves each node in $S$. To count LT relations we need to consider each element in $S$ ($n$ of these), we allow any set of relations with elements of $T$ except the empty one. $(2^{m} - 1)$ for each element which means the total number of left-total relations is $(2^{m} - 1)^{n}$.
+\paragraph{Right-total} This is also known as surjective. Every element of the codomain is addressed from somewhere. In the finite case, in matrix representation each row has one $1$, in graph notation at least one arrow arrives at each node in $T$. By similar reasoning to LT, RT count is $(2^{n} - 1 )^{m}$.
+\paragraph{Left-unique} This is also known as injective. Every element in codomain comes from at most one place. Note that this does not mean every element in the codomain is represented. If it is represented it comes from only one place. Elements in domain may go to more than one element in codomain. In the finite case, in matrix representation each row has at most one $1$. In the graph no element of the codomain may receive two or more arrows. Each row in the matrix has one or zero $1$s. This is $(n+1)^m$.
+\paragraph{Right-unique} This is also known as functional, an RU-relation is a partial function. Every element in domain that goes somewhere goes to at most one place. By similar reasoning to LU, RU count is $(m+1)^n$.\\
+Considering mixutres of these properties,\\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c | c | c | } \hline
+Properties & Finite case \\ \hline
+Left-total, Right-total & $\sum_{k=0}^{n}(-1)^{k}\binom{n}{k}(2^{(n-k)}-1)^{m}$ \\ \hline
+Left-total, Left-unique & \\ \hline
+Left-total, Right-unique (Function) & $m^{n}$ \\ \hline
+Left-total, Left-unique, Right-unique (Injective Function) & $\frac{m!}{n!}$ \\ \hline
+\end{tabular}
+\paragraph{LT \& RT} In finite case, we require $n \leq m$, otherwise The count is $\frac{m!}{n!}$.
+
+\paragraph{LT \& RU} This is a function. Every element in domain goes to exactly one place. In the finite case, in matrix representation each column has exactly one $1$, in graph notation exactly one arrow leaves each node in $S$. There are $n$ arrows that a free to choose among $m$ arrival point. LT \& RU count is $m^{n}$
+
+\paragraph{LT \& LU \& RU}
+
+(LU \& RU)
+
+(LT \& RT \& LU \& RU) 
+
+\subsection{Properties of Endorelations}
+Endorelations are relations with the domain and codomain the same set, $S = T$. In the finite case, using above we have $2^{n^{2}}$.
+We can consider more properties \\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c | c | c | } \hline
+Property & & Binary matrix desciption & Count \\ \hline
+Reflexivity & $\forall s\in S, sRs$  & $1$s on diagonal & $2^{n(n-1)}$  \\ \hline
+Coreflexivity & &  & \\ \hline
+Irreflexivity (Anti-reflexivity) & $\forall s\in S, \sim sRs$  & $0$s on diagonal & $2^{n(n-1)}$  \\ \hline
+Quasi-reflexivity & $\forall s \in S, \overline{s}Rs \Rightarrow sRs$ & 
+$1$ in column means diagonal is $1$ & $(1 + 2^{n-1})^2$ \\ \hline
+Symmetry & $\forall s_{1},s_{2}\in S, s_{1}Rs_{2} \Rightarrow s_{2}Rs_{1}$ & 
+Reflection in diagonal & $2^{n\frac{n+1}{2}}$ \\ \hline
+Anti-symmetry & $\forall s_{1},s_{2}\in S, s_{1}Rs_{2} \Rightarrow \ \sim s_{2}Rs_{1}$  & 
+& $2^{n}3^{n\frac{n-1}{2}}$ \\ \hline
+Asymmetry &  &
+& $3^{n\frac{n-1}{2}}$ \\ \hline
+Transitivity & $\forall s_{1}, s_{2}, s_{3}\in S (s_{1}Rs_{2}, s_{2}Rs_{3})\Rightarrow s_{1}Rs_{3}$ &
+& Tricky\\ \hline 
+\end{tabular}
+
+
+
+\begin{itemize}
+\item{$\forall s_{1},s_{2}\in S, s_{1}Rs_{2} \Rightarrow s_{1} = s_{2}$}
+
+\end{itemize}
+
+
+\paragraph{Symmetry} In finite case, in matrix representation we can choose elements in top right corner ($\frac{n^2 - n}{2}$) which dictates bottom right corner and choose elements on diagonal ($n$). $\frac{n^2 - n}{2} + n = \frac{n^2 + n}{2}$. So the count is $2^{\frac{n^2 + n}{2}}=2^{n\frac{n+1}{2}}$ 
+\paragraph{Assymmetry} In finite case, in matrix representation, top corner dictates bottom corner and no diagonals allowed. $2^{\frac{n^2 - n}{2}}$
+
+
+
+(TRA) This is difficult to count.
+
+
+Every domain element has exactly one codomain relation
+$$\forall a\in A, \exists b\in B, aRb$$
+$$\forall a\in A, aRb, aR\bar{b} \implies b = \bar{b}$$
+In matrix rpresentation each row has only one $1$.
+
+\section{Mappings}
+Relations that are left total and right unique are called mappings or functions.
+We denote a mapping by its name, a colon, the domain, an arrow and the codomain.
+We use the term n-ary operation to refer to a mapping from $A^{n}$ to $A$. This notion encompasses the concept of closure. The operation does not map "out of the set". 
+A mapping from a vector space to the underlying field is called a functional. A mapping between vector spaces or modules is called an operator. A linear/multilinear functional is a form. A form is a type of tensor. A tensor is a multilinear mapping from the dual space and vector space to the underlying field
+ 
+An algebra is the space consisting of a set/space and an operation. As this is trivial for many algebraic strucutres (eg group) it is usually employed in the context of linear spaces or other spaces that do not definitionally contain an operation. N-algebras indicate an n-ary operation. Usually an algrebra endows a binary operation on a space. 
+
+In set theory a map from $A$ to $B$ is denoted $B^{A}$. The power set can be considered as $2^{X}$. Think about this.
+
+If we consider the finite sets $S_{n}$, the set of m-ary functions from $S_{n}^{m} \rightarrow S_{n}$ contains
+
+Given a function
+$$f\colon X \rightarrow Y$$
+We have two induced set value functions.
+$$f\colon P(X) \rightarrow P(Y)$$
+$$A\mapsto f(A) = \{f(a) \mid a\in A\}$$
+Given a subset of $X$, $f$ provides image of this subset under repeated use of the original function on each element.
+$$f^{-1}\colon P(Y) \rightarrow P(X)$$
+$$A\mapsto f^{-1}(A) = \{x\in X \mid f(x)\in A\}$$
+Given a subset of $Y$, $f$ provides the subset of $Y$ that map to this subset under repeated use of the original function on each element. Of the two it is $f^{-1}$ that is well behaved.
+Assume $A_{\theta}\subseteq Y$
+\begin{align*}
+x\in f^{-1}(\emptyset)
+&\iff f(x)\in\emptyset \\
+&\iff x\in\emptyset 
+\end{align*}
+$$ f^{-1}(\emptyset) = \emptyset $$
+It is compatible with unions
+\begin{align*}
+x\in f^{-1}(\cup_{\theta} A_{\theta})  
+&\iff f(x)\in\cup_{\theta} A_{\theta} \\
+&\iff \exists\bar{\theta}, f(x)\in A_{\bar{\theta}} \\
+&\iff \exists\bar{\theta}, x\in f^{-1}(A_{\bar{\theta}}) \\
+&\iff x\in\cup_{\theta}f^{-1}(A_{\theta})
+\end{align*}
+$$f^{-1}(\cup_{\theta} A_{\theta}) = \cup_{\theta}f^{-1}(A_{\theta})$$
+It is compatible with intersections
+\begin{align*}
+x\in f^{-1}(\cap_{\theta} A_{\theta})
+&\iff f(x)\in\cap_{\theta} A_{\theta} \\
+&\iff \forall \theta, f(x)\in A_{\theta} \\
+&\iff \forall \theta, x\in f^{-1}(A_{\theta})\\
+&\iff x\in\cap_{\theta} f^{-1}(A_{\theta})
+\end{align*}
+$$f^{-1}(\cap_{\theta} A_{\theta}) = \cap_{\theta}f^{-1}(A_{\theta})$$
+It is compatible with complements
+\begin{align*}
+x\in f^{-1}(X / A_{\theta})
+&\iff f(x) \in X / A_{\theta} \\
+&\iff f(x) \notin A_{\theta} \\
+&\iff x \notin f^{-1} (A_{\theta}) \\
+&\iff x\in X / f^{-1}(A_{\theta})
+\end{align*}
+
+
+Assume $A_{\theta}\subseteq X$
+$$ f(\emptyset) = \emptyset $$
+This is vacuously true.
+
+\begin{align*}
+y\in f(\cup_{\theta} A_{\theta})
+&\iff \exists x\in\cup_{\theta} A_{\theta}, f(x)=y \\
+&\iff \exists\bar{\theta}, x\in A_{\bar{\theta}}, f(x)=y \\
+&\iff \exists\bar{\theta}, y\in f(A_{\bar{\theta}}) \\
+&\iff y\in\cup_{\theta} f(A_{\theta})
+\end{align*}
+$$ f(\cup_{\theta} A_{\theta}) = \cup_{\theta} f(A_{\theta})$$
+Note that
+$$ f(X) \neq Y$$
+in general. This is simply a restatement of the fact that not all $f$ are surjective. Furthermore
+$$ f(\cap_{\theta} A_{\theta}) \neq \cap_{\theta} f(A_{\theta})$$
+in general. If the function fails to be injective we can have the empty set on the LHS and the "double-booked" result on the RHS. 
+
+\subsection{Composition}
+$$f\colon X \rightarrow Y$$
+$$g\colon Y \rightarrow Z$$
+This induces a function
+$$h\colon X \rightarrow Z$$
+$$x\mapsto h(x) \equiv (g \circ f)(x) = g(f(x)) $$
+
+
+\section{Spaces}
+
+Most of mathematics is the study of spaces. Given a set we bolt on a mathematical property and study the properties that are a result of the new property. We consider homomorphisms, or structure preserving mappings of these spaces, and study the properties of the new mappings. New properties emerge. Upon these constructions the edifice of mathematics is built. \\
+
+\begin{tabular}
+{| l | r | r | r | c | c | c | c | c | c | c | c | c | } \hline
+Property & Structure    & Space & Area Of Mathematics \\ \hline
+Distance Between Elements & Metric & Metric Space & Geometry\\ \hline
+Designation of Open Subsets & Topology & Topological Space & Topology \\ \hline
+Size of Subsets & Measure & Measure Space & Measure Theory \\ \hline
+Interaction Between Elements & Operation & Magma & Algebra \\ \hline
+\end{tabular}
+
+
+\end{document}

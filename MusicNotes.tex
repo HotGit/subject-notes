@@ -1,0 +1,236 @@
+\documentclass[a4paper]{scrartcl}
+
+% This helps to minimize margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{Just a Few Notes}
+\author{Matthew Horton}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Notes and Frequencies}
+An octave is a doubling of frequency. Western music traditions split this into twelve geometrically evenly spaced semitones. The ratio between adjacent frequencies is $\sqrt[12]{2} \sim 1.0594630944$. Each note is roughly six percent higher than the last in frequency. A two semi-tone change in frequency is referred to as a tone.
+
+The fifth semitone (known as the fourth in Western music) is $1.3348$ which is very close to $\frac{4}{3}$. 
+The seventh semitone (known as the fifth in Western music) is $1.4983$ which is very close to $\frac{3}{2}$. The human ear/brain seems to be able to naturally appreciate these particular intervals.
+
+\section{Major}
+In Western music one of the fundamental constructs is the major scale. Having chosen a note, increasing in frequency in the pattern tone, tone, semi-tome, tone, tone, tone will produce a major scale. This consists of eight notes, the final one being double the frequency of the first. 
+
+\section{Intervals}
+
+Major interval is determined by participation in major scale. For some reason some "major" intervals (4th and 5th) are referred to as perfect. There are major and perfect fourths but they require consideration of quarter tones. This table shows intervals by flavour measured by semitones.\\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c |}
+\hline 
+Symbol & Flavour\\ \hline
+$\circ$ & Diminished  \\ \hline
+m & Minor  \\ \hline
+M & Major \\ \hline
+$P$ & Perfect \\ \hline
+$+$ & Augmented \\ \hline
+\end{tabular}\\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c | c | c | c | } \hline
+Interval & \multicolumn{11}{c}{Semitones} &  \\ \hline
+& 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ \hline
+2nd & m & M & + & & & & & & & & &    \\ \hline
+3rd & & $\circ$ & m & M & + & & & & & & & \\ \hline
+4th & & & & $\circ$ & P & + & & & & & & \\ \hline
+5th & & & & & & $\circ$ & P & + & & & & \\ \hline
+6th & & & & & & & $\circ$ & m & M & + & & \\ \hline
+7th & & & & & & & & & $\circ$ & m & M & + \\ \hline
+Octave & & & & & & & & & & $\circ$ & m & M \\ \hline
+\end{tabular}
+
+
+\section{Scales}
+\begin{tabular}
+{| l | r | r | r | c | c | c | c | c | c | c | c | c | } \hline
+& Semitones & Intervals & Relative to Major & Slang\\ \hline
+Major & 0, 2, 4, 5, 7, 9, 11, 12 & 2, 2, 1, 2, 2, 2, 1 & I, II, III, IV, V, VI, VII, 8\\ \hline
+Natural Minor & 0, 2, 3, 5, 7, 8, 10, 12 & 2, 1, 2, 2, 1, 2, 2 & 
+1, 2, $\flat$3, 4, 5, $\flat$6, $\flat$7, 8\\ \hline 
+Harmonic Minor & 0, 2, 3, 5, 7, 8, 11, 12 & 2, 1, 2, 2, 1, 3, 1 & 
+1, 2, $\flat$3, 4, 5, $\flat$6, 7, 8 \\ \hline 
+Melodic Minor & 0, 2, 3, 5, 7, 9, 11, 12 & 2, 1, 2, 2, 2, 2, 1 & 
+1, 2, $\flat$3, 4, 5, 6, 7, 8 \\ \hline 
++ Pentatonic & 0, 2, 4, 7, 9, 12 & 2, 2, 3, 2, 3 & I, II, III, V, VI, VIII & Drop IV and VIII \\ \hline
+- Pentatonic & 0, , 4, 7, 9, 12 & 2, 2, 3, 2, 3 & I, II, III, V, VI, VIII & Drop IV and VIII \\ \hline
+\end{tabular}
+
+\begin{tabular}
+{| l | r | r | r | c | c | c | c | c | c | c | c | c | } \hline
+& Relative to Major & Intervals & Slang\\ \hline
+Major &  I, II, III, IV, V, VI, VII, VIII & 2, 2, 1, 2, 2, 2, 1\\ \hline
+Natural Minor & I, II, iii, IV, V, vi, vii, VIII\\ \hline 
+Harmonic Minor & 0, 2, 3, 5, 7, 8, 11, 12 & 2, 1, 2, 2, 1, 3, 1 & 
+1, 2, $\flat$3, 4, 5, $\flat$6, 7, 8 \\ \hline 
+Melodic Minor & 0, 2, 3, 5, 7, 9, 11, 12 & 2, 1, 2, 2, 2, 2, 1 & 
+1, 2, $\flat$3, 4, 5, 6, 7, 8 \\ \hline 
+Major Pentatonic & I, II, III, V, VI, VIII & Drop IV and VIII \\ \hline
+Minor Pentatonic & I, iii, IV, V, viii & Drop IV and VIII \\ \hline
+Heptatonic Blues & I, iii, IV, V$\flat$, V, viii & Minor Pentatonic add the passing note \\ \hline
+\end{tabular}
+
+
+
+\section{Chords}
+Roman numerals used for the root of the chord. Uppercase is used for major triads and lower case for minor.
+\\
+\subsection{Triads}
+A triad is a three-note chord of stacked thirds.\\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c |} \hline
+Flavour & Semitones & Intervals & Notes & Notation & In Key &  \\ \hline
+Diminished & (0, 3, 6) & (3, 3) &  (1, 3$\flat$, 5$\flat$) & $^\circ$, dim & c$^\circ$, Cdim & (C, E$\flat$, G$\flat$) \\ \hline
+Minor & (0, 3, 7) & (3, 4) & (1, 3$\flat$, 5) & m & c, Cm & (C, E$\flat$, G)  \\ \hline
+Major & (0, 4, 7) & (4, 3) & (1, 3, 5) & M & C & (C,E,G) \\ \hline
+Augmented & (0, 4, 8) & (4, 4) & (1, 3, 5$\sharp$) & + & C+ & (C,E,G$\sharp$)  \\ \hline
+\end{tabular} \\
+In popular music dim often refers to to the $7$ chord discussed below.\\
+In a major key, there is a mixture of major and minor triads that occur by adhering to the notes of the key. On the leading-tone the triad is diminished. \\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c |}
+\hline 
+Root in Key & Chord &  Semitones & Intervals\\ \hline
+I - Tonic & I & (0, 4, 7) & (4, 3)  \\ \hline
+II - Supertonic & ii & (2, 5, 9) & (3, 4)  \\ \hline
+III - Mediant & iii & (4, 7, 11) & (3, 4) \\ \hline
+IV - Subdominant & VI & (5, 9, 0) & (4, 3) \\ \hline
+V - Dominant & V & (7, 11, 2) & (4, 3) \\ \hline
+VI - Submediant & vi & (9, 0, 4) & (3, 4) \\ \hline
+VII - Leading-Tone & vii$^\circ$ & (11, 2, 5) & (3, 3) \\ \hline
+\end{tabular}
+
+\subsection{Inversion}
+When the root note gets moved up an octave this is called the first inversion. The colour of the chord is changed. Sometime this is apparently  notated by a small six to denote that the high pitch note(root) is a sixth above the lowest(third). The second inversion is when the root and third are up an octave and is denoted by a small 4 and 6 stacked. These are different numbers than those used in guitar chords. I don't think you need to worry about this notation.
+
+\subsection{Seventh Chords}
+Seventh chords are generally a triad with an added seventh. Formally the chord can be referred by the flavour of the triad and flavour of the seventh. If these are the same the single name is used. The vanilla seventh is the dominant seventh (major minor). This chord sits "naturally" in the key e.g. G$^{7} = $\ G B D F in C.\\
+\begin{tabular}
+{| l | l | c | c | c | c | c | c | c |} \hline
+Flavour & Triad - 7th & Semitones & Intervals & Notes & Notation & In Key \\ \hline
+Diminished & Dim dim & (0, 3, 6, 9) & (3, 3, 3) & (1, 3$\flat$, 5$\flat$, 7$\flat\flat$) & $\circ$7, dim7, dim & C$\circ$7, Cdim, Cdim7 \\ \hline
+$\frac{1}{2}$-Diminished & Dim Minor & (0, 3, 6, 10) & (3, 3, 4) & (1, 3$\flat$, 5$\flat$, 7$\flat$)  & $\oslash$7, m7-5, m7$\flat$5 & C$\oslash$7, Cm7-5, Cm7$\flat$5 \\ \hline
+Minor & Minor Minor & (0, 3, 7, 10) & (3, 4, 3) & (1, 3$\flat$, 5, 7$\flat$) & m7 & Cm7 \\ \hline
+Minor major & Minor Major & (0, 3, 7, 11) & (3, 4, 4) & (1, 3$\flat$, 5, 7) & mM7 & CmM7  \\ \hline
+Dominant & Major Minor & (0, 4, 7, 10) & (4, 3, 3) & (1, 3, 5, 7$\flat$)  & 7 & C7 \\ \hline
+Major & Major Major & (0, 4, 7, 11) & (4, 3, 4) & (1, 3, 5, 7)  & M7, maj7 & CM7, Cmaj7 \\ \hline
+Augmented & Aug Minor & (0, 4, 8, 10) & (4, 4, 2) & (1, 3, 5$\sharp$, 7$\flat$) & +7 & C+7 \\ \hline
+Augmented Major & Aug Major & (0, 4, 8, 11) & (4, 4, 3) & (1, 3, 5$\sharp$, 7)   & +M7 & C+M7 \\ \hline
+\end{tabular} \\
+Note the augmented seventh includes a major second (diminished third). \\
+\subsection{More Exotic Chords}
+\begin{tabular}
+{| l | l | c | c | c | c | c | c | c |} \hline
+Flavour & Description & Semitones & Intervals & Notes & Notation & In Key \\ \hline
+Suspended 9th & Major Triad + 2nd - 3rd & (0, 2, 7) & (2, 5) & (1, 2, 5) & sus2, sus9 & Csus2, Csus9 \\ \hline
+Minor Sixth & Minor Triad + 6th & (0, 3, 7, 9) & (3, 4, 2) & (1, 3$\flat$, 5, 6) & m6 & Cm6 \\ \hline
+Sixth & Major Triad + 6th & (0, 4, 7, 9) & (4, 3, 2) & (1, 3, 5, 6) & 6 & C6 \\ \hline
+Suspended & Major Triad + 4th - 3rd & (0, 5, 7) & (5, 2) & (1, 4, 5) & sus, sus4 & Csus, Csus4 \\ \hline
+Fifth & Major Triad - 3rd & (0,7) & (7) & (1, 5) & 5 & C5 \\ \hline
+
+\end{tabular} \\
+More....\\
+C$^{9} = $\ C$^{7} + 9^{+}$\\
+C$^{11} = $\ C$^{7} + 11^{P}$ (I have written no 3rd???) \\
+
+Extended chords apparently include intervening notes so a 13 implies a 7th with the 9th and 11th.
+
+\subsection{Slashes}
+X/Y means chord X with Y in the bass. Y may be part of the chord but can also be an added note. For example ensure you play Y with the left hand on piano.
+
+
+\subsection{Popular Music Chord Notation}
+In the key of X ... \\
+\begin{tabular}
+{| l | l | c | c | c | c | c | c | c |} \hline
+Symbol & Alt-Symbols & Chord & Description & Semitones & Intervals & Notes \\ \hline
+X & XM or Xmaj & X Major & & & (0,4,7) & (1,3,5) \\ \hline
+Xm & & X Minor & & & & (1,3$\flat$,5) \\ \hline
+X$^7$ & & X Dominant 7th & & & (0,4,7,10) & (1,3,5,7$\flat$) \\ \hline
+X$^5$ & & X Power Chord & & & (0,7,12) & (1,5,8) \\ \hline
+
+
+\end{tabular} \\
+
+
+
+\section{Diatonics}
+
+Triads, \\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c |}
+\hline 
+Major & I & ii & iii & IV & V & vi & vii$^\circ$  \\ \hline
+Natural Minor & i & ii$^\circ$ & III & iv & v & VII & VII   \\ \hline 
+Harmonic Minor & i & ii$^\circ$ & III+ & iv & V & VII & vii$^\circ$ \\ \hline
+Melodic Minor & i & ii & III+ & VI & V & vi$^\circ$ & vii$^\circ$ \\ \hline
+\end{tabular} \\
+Sevenths, \\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c |}
+\hline 
+Major & M7 & m7 & m7 & M7 & 7 & m7 & $\oslash$7  \\ \hline
+Natural Minor & m7 & $\oslash$7 & M7 & m7 & m7 & M7 & 7    \\ \hline 
+Harmonic Minor & mM7 & $\oslash$7 & +M7 & m7 & 7 & M7 & $\circ$7 \\ \hline
+Melodic Minor & mM7 & m7 & +M7 & 7 & 7 & $\oslash$7 & $\oslash$7 \\ \hline
+\end{tabular}
+
+
+\section{Guitar}
+When you are in a chord .... find root on low E an place first finger. 1-4, 1-3, 1-3, 1-3, 1-4, 1-4 gives you minor pentatonic. If you put 4 on the root and use the same finger patter you get the major pentatonic
+
+Conisdering the minor pentatonic 1-4, 1-(2)-3, 1-3, 1-3-(4), 1-4, 1-4, these additions are the blue note to make it the heptatonic blues scale. 
+
+Over blues if playing major pentatonic you need to match chord. Awful if you miss chord change.
+
+\section{Harmonica}
+
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c |}
+\hline 
+Hole & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+Blow & I & III & V & I & III & V & I & III & V & I \\ \hline
+Draw & II & V & VII & II & IV & VI & VII & II & IV & VI   \\ \hline 
+\end{tabular} \\
+The harmonica has a base key. All notes that are available are from the major scale of the key. Blowing gives you contituents of the major chord in this key. Drawing gives you to access to a greater set of notes.
+
+
+It isn't hard to bend draws.
+
+5-
+\subsection{Cross Harp (Second Position)}
+Second position is a fifth above the standard key.\\
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c |}
+\hline 
+Hole & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+Blow & IV & VI & I & IV & VI & I & IV & VI & I & IV \\ \hline
+Draw & V & I & III & V & vii & II & III & V & vii & II   \\ \hline 
+Bent Draw & ? & ? & iii & ? & ? & ? & ? & ? & ? & ?   \\ \hline 
+\end{tabular} 
+\\
+We see the blue scales 2-Draw 3-Bend-Draw 4-Blow 5-Draw 7-Draw 6-Blow
+
+In the key of C\\
+
+\begin{tabular}
+{| l | c | c | c | c | c | c | c | c | c | c |}
+\hline
+Hole & C & E & G & C & E & G & C & E & G & C \\ \hline
+Blow & D & G & B & D & F & A & B & D & F & A \\ \hline
+\end{tabular} \\
+
+
+\end{document}
